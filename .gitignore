@@ -37,3 +37,7 @@ yarn-debug.log*
 .yarn-integrity
 
 .env
+
+# Ignore rspec files
+.rspec
+/spec/examples.txt
