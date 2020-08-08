@@ -10,6 +10,10 @@ body {
   word-wrap: break-word;
 }
 
+html {
+  background-color: $color-base-bg;
+}
+
 h1,
 h2,
 h3,
@@ -32,7 +36,7 @@ p {
 }
 
 a {
-  color: var(--color-base-text);
+  color: $color-base;
   text-decoration: none;
 }
 

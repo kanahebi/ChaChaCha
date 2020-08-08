@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charSet="utf-8">
+    <meta name="viewport" content="width=device-width">
+
     <title>ChaChaCha</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,8 +13,12 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <%= yield %>
-    <%= render "layouts/sticky_navigation" %>
+    <div class="l-main">
+      <%= render "layouts/header" %>
+      <div class="l-content">
+        <%= yield %>
+      </div>
+      <%= render "layouts/sticky_navigation" %>
+    </div>
   </body>
 </html>
