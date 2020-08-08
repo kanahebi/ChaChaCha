@@ -1,0 +1,17 @@
+<%= form_with(model: session, url: session_path, local: true) do |form| %>
+  <%= render "shared/errors", object: form.object %>
+
+  <div>
+    <%= form.label :unique_name %>
+    <%= form.text_field :unique_name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'ログイン' %>
+  </div>
+<% end %>
