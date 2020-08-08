@@ -1,0 +1,24 @@
+ja:
+  activemodel:
+    attributes:
+      session:
+        unique_name: ユーザID
+        password: パスワード
+
+  activerecord:
+    models:
+      user: ユーザ
+
+    attributes:
+      user:
+        unique_name: ユーザID
+        name: ユーザ名
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        password_digest: パスワードダイジェスト
+        role: 役割
+
+  attributes:
+    created_at: 登録日時
+    updated_at: 更新日時
+    created_by_id: 登録者
