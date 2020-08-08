@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 0) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "name", null: false, comment: "ユーザー名"
+    t.string "name", null: false, comment: "ユーザ名"
     t.string "password_digest", null: false, comment: "パスワードダイジェスト"
     t.integer "role", null: false, comment: "権限"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "unique_name", null: false, comment: "ユーザID"
   end
 
 end
