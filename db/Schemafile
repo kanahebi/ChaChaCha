@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+DB_OPTIONS = "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"
+
+Dir.glob("db/schemas/*.schema") do |path|
+  require File.expand_path(path)
+end
