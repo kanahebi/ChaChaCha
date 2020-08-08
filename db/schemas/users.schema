@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+create_table "users", force: :cascade do |t|
+  t.string "name", null: false, comment: "ユーザー名"
+  t.string "password_digest", null: false, comment: "パスワードダイジェスト"
+  t.integer "role", null: false, comment: "権限"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+end
