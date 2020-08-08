@@ -3,7 +3,10 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   before_action :require_login
+  after_action :verify_authorized
 
   helper_method :current_user, :logged_in?
 
@@ -19,5 +22,13 @@ class ApplicationController < ActionController::Base
 
   def require_login
     redirect_to new_session_url unless logged_in?
+  end
+
+  def pundit_user
+    current_user
+  end
+
+  def user_not_authorized(exception)
+    render file: Rails.root.join('public/404.html'), layout: false, status: :not_found
   end
 end
