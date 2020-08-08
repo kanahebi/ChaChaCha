@@ -1,4 +1,6 @@
 <div class="l-container">
-  root page dayo<br>
+  <%= render "shared/section", title: "さん、本日もお疲れさまです。" do %>
+    root page dayo
+  <% end %>
   <%= link_to 'ログアウト',session_path, method: :delete %>
 </div>
