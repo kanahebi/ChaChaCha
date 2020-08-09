@@ -23,6 +23,7 @@ ja:
         name: クライアント名
         users_limit: 最大ユーザ数
       daily_report:
+        date: 日付
         memo: メモ
       department:
         name: 部署名
