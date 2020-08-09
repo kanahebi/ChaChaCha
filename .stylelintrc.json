@@ -5,6 +5,7 @@
   ],
   "rules": {
     "number-leading-zero": "never",
-    "value-keyword-case": null
+    "value-keyword-case": null,
+    "at-rule-no-unknown": null
   }
 }

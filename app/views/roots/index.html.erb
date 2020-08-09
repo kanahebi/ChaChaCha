@@ -2,7 +2,7 @@
   <%= render "shared/section", title: "#{current_user.name}さん、本日もお疲れさまです。" do %>
     <ul class="iconic-list">
       <li class="iconic-list-item">
-        <%= link_to "#", class: "iconic-list-anchor" do %>
+        <%= link_to new_daily_report_path, class: "iconic-list-anchor" do %>
           <div class="icon">
             <i class="fas fa-hand-point-up"></i>
             <div class="label-icon done">

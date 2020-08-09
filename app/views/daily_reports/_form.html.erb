@@ -1,0 +1,25 @@
+<%= form_with(model: daily_report, local: true) do |form| %>
+  <%= render "shared/errors", object: form.object %>
+
+  <%= render "shared/section", title: "1. 作業日時" do %>
+    <%= render "shared/form_group", form: form, name: :date, required: true do %>
+      <%= form.date_field :date, class: 'form-control' %>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/section", title: "2. 報告内容を編集" do %>
+  <% end %>
+
+  <%= render "shared/section", title: "3. ありがとうを送る" do %>
+  <% end %>
+
+  <%= render "shared/section", title: "4. 連絡事項" do %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= form.text_area :memo, class: 'form-control', rows: 3 %>
+    <% end %>
+  <% end %>
+
+  <div class="submit-container">
+    <%= form.submit class: 'btn-primary block rounded' %>
+  </div>
+<% end %>
