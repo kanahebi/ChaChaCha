@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+create_table "departments", force: :cascade do |t|
+  t.references "client", comment: "クライアント"
+  t.string "name", null: false, comment: "部署名"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+end
