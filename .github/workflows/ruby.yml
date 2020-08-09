@@ -60,3 +60,7 @@ jobs:
         bundle exec rails db:schema:load RAILS_ENV=test
     - name: Run rspec
       run: bundle exec rspec
+    - name: Run eslint
+      run: yarn lint:js
+    - name: Run stylelint
+      run: yarn lint:css

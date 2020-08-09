@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-property-sort-order-smacss"
+  ],
+  "rules": {
+    "number-leading-zero": "never",
+    "value-keyword-case": null
+  }
+}
