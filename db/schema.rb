@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "daily_reports", force: :cascade do |t|
     t.bigint "user_id", comment: "ユーザ"
     t.text "memo", comment: "メモ"
+    t.datetime "date", comment: "日付"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "date"], name: "index_daily_reports_on_user_id_and_date", unique: true
     t.index ["user_id"], name: "index_daily_reports_on_user_id"
   end
 
