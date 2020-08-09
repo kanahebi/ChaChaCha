@@ -1,4 +1,4 @@
-User.pluck(:id).each do |user_id|
+User.where(role: :client_general).pluck(:id).each do |user_id|
   2.times do |i|
     DailyReport.seed do |d|
       d.user_id = user_id
