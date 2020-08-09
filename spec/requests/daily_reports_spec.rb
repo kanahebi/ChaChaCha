@@ -23,7 +23,7 @@ RSpec.describe "/daily_reports", type: :request do
     skip("Add a hash of attributes invalid for your model")
   }
 
-  describe "GET /index" do
+  xdescribe "GET /index" do
     it "renders a successful response" do
       DailyReport.create! valid_attributes
       get daily_reports_url
@@ -31,7 +31,7 @@ RSpec.describe "/daily_reports", type: :request do
     end
   end
 
-  describe "GET /show" do
+  xdescribe "GET /show" do
     it "renders a successful response" do
       daily_report = DailyReport.create! valid_attributes
       get daily_report_url(daily_report)
@@ -39,14 +39,14 @@ RSpec.describe "/daily_reports", type: :request do
     end
   end
 
-  describe "GET /new" do
+  xdescribe "GET /new" do
     it "renders a successful response" do
       get new_daily_report_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
+  xdescribe "GET /edit" do
     it "render a successful response" do
       daily_report = DailyReport.create! valid_attributes
       get edit_daily_report_url(daily_report)
@@ -54,7 +54,7 @@ RSpec.describe "/daily_reports", type: :request do
     end
   end
 
-  describe "POST /create" do
+  xdescribe "POST /create" do
     context "with valid parameters" do
       it "creates a new DailyReport" do
         expect {
@@ -82,7 +82,7 @@ RSpec.describe "/daily_reports", type: :request do
     end
   end
 
-  describe "PATCH /update" do
+  xdescribe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
         skip("Add a hash of attributes valid for your model")
@@ -112,7 +112,7 @@ RSpec.describe "/daily_reports", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
+  xdescribe "DELETE /destroy" do
     it "destroys the requested daily_report" do
       daily_report = DailyReport.create! valid_attributes
       expect {
