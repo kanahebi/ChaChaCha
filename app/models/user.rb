@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   enum role: { system_admin: 10, client_admin: 20, client_general: 30 }
 
+  private
+
   def over_users_limit?
     errors.add(:base, 'ユーザ数が上限に達しています') if client && client.users.count >= client.users_limit
   end
