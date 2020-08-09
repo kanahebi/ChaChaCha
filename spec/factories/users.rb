@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :user do
+    client
     sequence(:unique_name) { |n| "user#{n}" }
     sequence(:name) { |n| "ユーザ#{n}" }
     password { 'password' }

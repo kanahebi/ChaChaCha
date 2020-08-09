@@ -15,13 +15,22 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name", null: false, comment: "クライアント名"
+    t.integer "users_limit", default: 0, null: false, comment: "最大ユーザ数"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "unique_name", null: false, comment: "ユーザID"
     t.string "name", null: false, comment: "ユーザ名"
     t.string "password_digest", null: false, comment: "パスワードダイジェスト"
     t.integer "role", null: false, comment: "権限"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "unique_name", null: false, comment: "ユーザID"
+    t.bigint "client_id", comment: "クライアント"
+    t.index ["client_id"], name: "index_users_on_client_id"
   end
 
 end

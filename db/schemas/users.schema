@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 create_table "users", force: :cascade do |t|
+  t.references "client", comment: "クライアント"
   t.string "unique_name", null: false, unique: true, comment: "ユーザID"
   t.string "name", null: false, comment: "ユーザ名"
   t.string "password_digest", null: false, comment: "パスワードダイジェスト"

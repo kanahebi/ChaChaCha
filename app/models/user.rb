@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  belogs_to :client, optional: true # 影山さんはnull
+  # belongs_to :department, optional: true # 影山さんはnull
+  # has_many :daily_reports, dependent: :restrict_with_exception
+  # has_many :arigatonas, dependent: :restrict_with_exception
+
   has_secure_password
 
   UNIQUE_NAME_REGEX = /\A[a-z0-9\-_]+\z/i.freeze
