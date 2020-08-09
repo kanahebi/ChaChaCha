@@ -1,6 +1,6 @@
 .l-sticky-navigation {
   border-top: 1px solid $color-base-border;
-  background-color: #fff;;
+  background-color: #fff;
 
   .navigations {
     display: flex;
@@ -10,8 +10,8 @@
 
   .navigation-item {
     display: block;
-    flex-grow: 1;
     flex-basis: 33%;
+    flex-grow: 1;
   }
 
   .navigation-anchor {

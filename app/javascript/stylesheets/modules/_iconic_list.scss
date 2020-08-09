@@ -18,10 +18,10 @@
       color: $color-base-text;
 
       .label-icon {
+        display: inline-block;
         position: absolute;
         top: -.25rem;
         right: -.25rem;
-        display: inline-block;
 
         &.done {
           display: grid;
