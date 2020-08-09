@@ -1,0 +1,63 @@
+.iconic-list {
+  list-style: none;
+
+  .iconic-list-anchor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icon {
+      display: grid;
+      position: relative;
+      align-content: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid $color-base-border;
+      border-radius: $radius-base;
+      color: $color-base-text;
+
+      .label-icon {
+        position: absolute;
+        top: -.25rem;
+        right: -.25rem;
+        display: inline-block;
+
+        &.done {
+          display: grid;
+          align-content: center;
+          justify-content: center;
+          width: 1rem;
+          height: 1rem;
+          border-radius: 50%;
+          background-color: $color-done;
+          color: #fff;
+          font-size: .5rem;
+        }
+
+        &.arigato {
+          right: -.5rem;
+          padding: 0 .25rem;
+          border-radius: 50px;
+          background-color: $color-arigato;
+          color: #fff;
+          font-size: .7rem;
+        }
+      }
+    }
+
+    .body {
+      flex-grow: 1;
+      padding-left: $spacer;
+    }
+
+    .arrow-icon {
+      color: $color-base-text;
+      font-size: .8rem;
+    }
+  }
+
+  .iconic-list-item + .iconic-list-item {
+    margin-top: 1rem;
+  }
+}

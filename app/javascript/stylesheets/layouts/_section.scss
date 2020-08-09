@@ -1,0 +1,21 @@
+.l-section {
+  margin: 1rem 0;
+
+  .section-title {
+    margin-bottom: .5rem;
+    padding: 0 $spacer;
+
+    .title {
+      color: $color-base-text;
+      font-size: .9rem;
+      font-weight: bold;
+    }
+  }
+
+  .section-body {
+    padding: $spacer;
+    border-top: 1px solid $color-base-border;
+    border-bottom: 1px solid $color-base-border;
+    background-color: #fff;
+  }
+}

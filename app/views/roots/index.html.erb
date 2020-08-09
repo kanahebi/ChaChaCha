@@ -1,4 +1,44 @@
 <div class="l-container">
-  root page dayo<br>
+  <%= render "shared/section", title: "#{current_user.name}さん、本日もお疲れさまです。" do %>
+    <ul class="iconic-list">
+      <li class="iconic-list-item">
+        <%= link_to "#", class: "iconic-list-anchor" do %>
+          <div class="icon">
+            <i class="fas fa-hand-point-up"></i>
+            <div class="label-icon done">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <div class="body">
+            今日の日報を入力しましょう
+          </div>
+          <i class="fas fa-chevron-right arrow-icon"></i>
+        <% end %>
+      </li>
+      <li class="iconic-list-item">
+        <%= link_to "#", class: "iconic-list-anchor" do %>
+          <div class="icon">
+            <i class="fas fa-heart"></i>
+            <div class="label-icon arigato">100</div>
+          </div>
+          <div class="body">
+            "ありがとう"を見る
+          </div>
+          <i class="fas fa-chevron-right arrow-icon"></i>
+        <% end %>
+      </li>
+      <li class="iconic-list-item">
+        <%= link_to "#", class: "iconic-list-anchor" do %>
+          <div class="icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="body">
+            過去の日報を確認する
+          </div>
+          <i class="fas fa-chevron-right arrow-icon"></i>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
   <%= link_to 'ログアウト',session_path, method: :delete %>
 </div>

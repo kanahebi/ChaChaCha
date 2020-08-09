@@ -1,3 +1,7 @@
+@import 'layouts/header';
+@import 'layouts/sticky_navigation';
+@import 'layouts/section';
+
 .l-container {
   max-width: 40rem;
   margin: 0 auto;
@@ -10,46 +14,5 @@
 
   .l-content {
     flex-grow: 1;
-  }
-}
-
-.l-header {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid $color-base-border;
-  background-color: #fff;
-  font-weight: bold;
-}
-
-.l-sticky-navigation {
-  border-top: 1px solid $color-base-border;
-  background-color: #fff;;
-
-  .navigations {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-  }
-
-  .navigation-item {
-    display: block;
-    flex-grow: 1;
-    flex-basis: 33%;
-  }
-
-  .navigation-anchor {
-    display: block;
-    padding: .5rem 0;
-    text-align: center;
-
-    &.active {
-      color: $color-primary;
-    }
-  }
-
-  .navigation-label {
-    font-size: .8rem;
-    font-weight: bold;
   }
 }

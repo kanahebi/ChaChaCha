@@ -1,0 +1,32 @@
+.l-sticky-navigation {
+  border-top: 1px solid $color-base-border;
+  background-color: #fff;;
+
+  .navigations {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  .navigation-item {
+    display: block;
+    flex-grow: 1;
+    flex-basis: 33%;
+  }
+
+  .navigation-anchor {
+    display: block;
+    padding: .5rem 0;
+    color: $color-base-text;
+    text-align: center;
+
+    &.active {
+      color: $color-primary;
+    }
+  }
+
+  .navigation-label {
+    font-size: .8rem;
+    font-weight: bold;
+  }
+}
