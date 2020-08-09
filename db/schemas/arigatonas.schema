@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-create_table "arigatona", force: :cascade do |t|
+create_table "arigatonas", force: :cascade do |t|
   t.references "daily_report", comment: "日報"
   t.references "user", comment: "ユーザ"
   t.text "comment", null: false, comment: "コメント"

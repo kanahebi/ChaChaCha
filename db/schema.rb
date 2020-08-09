@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "arigatona", force: :cascade do |t|
+  create_table "arigatonas", force: :cascade do |t|
     t.bigint "daily_report_id", comment: "日報"
     t.bigint "user_id", comment: "ユーザ"
     t.text "comment", null: false, comment: "コメント"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["daily_report_id"], name: "index_arigatona_on_daily_report_id"
-    t.index ["user_id"], name: "index_arigatona_on_user_id"
+    t.index ["daily_report_id"], name: "index_arigatonas_on_daily_report_id"
+    t.index ["user_id"], name: "index_arigatonas_on_user_id"
   end
 
   create_table "clients", force: :cascade do |t|
