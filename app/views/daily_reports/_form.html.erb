@@ -2,6 +2,9 @@
   <%= render "shared/errors", object: form.object %>
 
   <%= render "shared/section", title: "1. 作業日時" do %>
+    <%= render "shared/form_group", form: form, name: :date, required: true do %>
+      <%= form.date_field :date, class: 'form-control' %>
+    <% end %>
   <% end %>
 
   <%= render "shared/section", title: "2. 報告内容を編集" do %>

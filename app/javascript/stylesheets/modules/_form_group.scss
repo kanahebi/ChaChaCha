@@ -3,6 +3,17 @@
     display: block;
     margin-bottom: .5rem;
     font-size: .8rem;
+
+    &.required {
+      &::after {
+        content: '必須';
+        margin-left: .25rem;
+        padding: 0 .25rem;
+        background-color: $color-danger;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
   }
 
   .form-control {
