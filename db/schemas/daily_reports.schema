@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+create_table "daily_reports", force: :cascade do |t|
+  t.references "user", comment: "ユーザ"
+  t.text "memo", comment: "メモ"
+  t.datetime "created_at", precision: 6, null: false
+  t.datetime "updated_at", precision: 6, null: false
+end
