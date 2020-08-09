@@ -7,9 +7,25 @@ ja:
 
   activerecord:
     models:
+      arigatona: ありがとう
+      client: クライアント
+      daily_report: 日報
+      department: 部署
       user: ユーザ
+      work_content: 作業内容
+      work_property: 作業物件
+      work: 作業
 
     attributes:
+      arigatona:
+        comment: コメント
+      client:
+        name: クライアント名
+        users_limit: 最大ユーザ数
+      daily_report:
+        memo: メモ
+      department:
+        name: 部署名
       user:
         unique_name: ユーザID
         name: ユーザ名
@@ -17,6 +33,15 @@ ja:
         password_confirmation: パスワード（確認）
         password_digest: パスワードダイジェスト
         role: 役割
+      work_content:
+        name: 作業名
+        name_kana: 作業名カナ
+        active: 日報に表示
+      work_property:
+        name: 物件名
+        code: 物件コード
+        active: 日報に表示
+      work:
 
   attributes:
     created_at: 登録日時
