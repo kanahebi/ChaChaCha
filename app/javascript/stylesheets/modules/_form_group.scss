@@ -1,0 +1,15 @@
+.form-group {
+  .form-label {
+    display: block;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+  }
+
+  .form-control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid $color-base-border;
+  }
+}
