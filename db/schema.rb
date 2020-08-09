@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "client_id", comment: "クライアント"
-    t.bigint "department_id", comment: "部署"
     t.string "unique_name", null: false, comment: "ユーザID"
     t.string "name", null: false, comment: "ユーザ名"
     t.string "password_digest", null: false, comment: "パスワードダイジェスト"
     t.integer "role", null: false, comment: "権限"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "client_id", comment: "クライアント"
+    t.bigint "department_id", comment: "部署"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["department_id"], name: "index_users_on_department_id"
   end
