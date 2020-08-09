@@ -13,15 +13,15 @@ class Work < ApplicationRecord
   private
 
   def start_should_be_before_end
-    errors.add(:base, '開始時刻は終了時刻より前にしてください') if start_at > end_at
+    errors.add(:base, I18n.t('errors.messages.start_should_be_before_end')) if start_at > end_at
   end
 
   def work_time_must_not_over_lap
-    # 今回追加するレコードの開始時刻が既存レコードの作業時刻内にある場合
-    if daily_report.works.where('start_at < ?', start_at).where('end_at > ?', start_at).exists? ||
-    # 今回追加するレコードの終了時刻が既存レコードの作業時刻内にある場合
-       daily_report.works.where('start_at < ?', end_at).where('end_at > ?', end_at).exists?
-       errors.add(:base, '作業時刻が重複しています')
+    # 今回追加するレコードの開始時刻が既存レコードの作業時刻内にある場合(ex. 既存: 1:00-3:00, 新規: 2:00-4:00)
+    if daily_report.works.where('start_at <= ?', start_at).where('end_at > ?', start_at).exists? ||
+    # 今回追加するレコードの終了時刻が既存レコードの作業時刻内にある場合(ex. 既存: 1:00-3:00, 新規: 0:00-2:00)
+       daily_report.works.where('start_at < ?', end_at).where('end_at >= ?', end_at).exists?
+       errors.add(:base, I18n.t('errors.messages.work_time_must_not_over_lap'))
     end
   end
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :work do
-    user
+    daily_report
     work_content
     work_property
     start_at { 3.hours.ago }
