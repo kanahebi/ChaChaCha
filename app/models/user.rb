@@ -22,6 +22,6 @@ class User < ApplicationRecord
   private
 
   def over_users_limit?
-    errors.add(:base, 'ユーザ数が上限に達しています') if client && client.users.count >= client.users_limit
+    errors.add(:base, I18n.t('errors.messages.over_users_limit')) if client && client.users.count >= client.users_limit
   end
 end

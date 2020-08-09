@@ -135,6 +135,7 @@ ja:
       wrong_length: は%{count}文字で入力してください
       start_should_be_before_end: 開始時刻は終了時刻より前にしてください
       work_time_must_not_over_lap: 作業時刻が重複しています
+      over_users_limit: ユーザ数が上限に達しています
     template:
       body: 次の項目を確認してください
       header:
