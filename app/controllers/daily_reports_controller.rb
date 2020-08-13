@@ -29,6 +29,8 @@ class DailyReportsController < ApplicationController
   def create
     authorize DailyReport
 
+    raise
+
     @daily_report = DailyReport.new(daily_report_params)
 
     respond_to do |format|
@@ -67,13 +69,33 @@ class DailyReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_daily_report
-      @daily_report = DailyReport.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def daily_report_params
-      params.fetch(:daily_report, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_daily_report
+    @daily_report = DailyReport.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def daily_report_params
+    params.require(:daily_report).permit(
+      :memo
+    )
+  end
+
+  def works_params
+    params.require(:works).permit(
+      :work_content_id,
+      :work_property_id,
+      :start_at,
+      :end_at,
+      :include_rest
+    )
+  end
+
+  def arigatona_params
+    params.require(:arigatona).permit(
+      :user_id,
+      :comment,
+    )
+  end
 end
