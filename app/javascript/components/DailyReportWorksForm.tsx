@@ -21,7 +21,7 @@ const DailyReportWorksForm = () => {
           &quot;報告する内容&quot;に追加
         </button>
       </FormGroup>
-      {works.map((work) => <WorkEntity work={work} />)}
+      {works.map((work) => <WorkEntity key={work.workPropertyId} work={work} />)}
     </>
   );
 };
