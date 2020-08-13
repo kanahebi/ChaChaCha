@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-export const FormGroup = ({ children }) => {
-  return (
-    <div className="form-group">
-      {children}
-    </div>
-  )
-}
+export const FormGroup = ({ children }) => (
+  <div className="form-group">
+    {children}
+  </div>
+);
