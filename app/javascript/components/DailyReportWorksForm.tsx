@@ -6,13 +6,12 @@ const DailyReportWorksForm = () => {
 
   const handleAdd = () => {
     setWorksCount(worksCount + 1);
-    console.log(worksCount);
   };
 
   return (
     <>
       {Array(worksCount).fill(null).map((_, i) => <WorkEntity key={i} />)}
-      <button type="button" onClick={handleAdd}>add</button>
+      <button type="button" onClick={handleAdd}>&quot;報告する内容&quot;に追加</button>
     </>
   );
 };
