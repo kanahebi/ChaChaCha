@@ -3,12 +3,12 @@ import React from 'react';
 interface IFormGroup {
   label?: string
   required?: boolean
-  children: any
+  children: React.ReactNode
 }
 
-export const FormGroup = ({ label, children, required = false }: IFormGroup) => (
+export const FormGroup = ({ label, children, required }: IFormGroup) => (
   <div className="form-group">
-    <label>
+    <label className="form-group-inner">
       {
         label
         && <div className={`form-label ${required ? 'required' : ''}`}>{label}</div>
