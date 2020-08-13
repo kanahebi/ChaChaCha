@@ -25,6 +25,9 @@ module.exports = {
     'react/prop-types': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/require-default-props': 'off',
+    'react/no-array-index-key': 'off',
   },
   settings: {
     'import/resolver': {

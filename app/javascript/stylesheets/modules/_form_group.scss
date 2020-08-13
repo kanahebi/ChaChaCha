@@ -23,6 +23,24 @@
     padding: 1rem;
     border: 1px solid $color-base-border;
   }
+
+  &.toggle {
+    .form-group-inner {
+      display: flex;
+      align-items: center;
+      padding: .25rem 0;
+    }
+
+    .form-label {
+      display: inline;
+      margin: 0;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: auto;
+    }
+  }
 }
 
 .form-group + .form-group {

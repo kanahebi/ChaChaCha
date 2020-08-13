@@ -18,6 +18,12 @@
   }
 }
 
+.btn-default {
+  @extend %button;
+
+  background-color: $color-base-bg;
+}
+
 .btn-primary {
   @extend %button;
 

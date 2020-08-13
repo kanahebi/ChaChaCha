@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-import { WorkEntity } from './WorkEntity';
+import { FormGroup } from './FormGroup';
+import { WorkForm } from './WorkForm';
 
 const DailyReportWorksForm = () => {
-  const [worksCount, setWorksCount] = useState(1);
-
   const handleAdd = () => {
-    setWorksCount(worksCount + 1);
+    console.log('add!');
   };
 
   return (
     <>
-      {Array(worksCount).fill(null).map((_, i) => <WorkEntity key={i} />)}
-      <button type="button" onClick={handleAdd}>&quot;報告する内容&quot;に追加</button>
+      <WorkForm />
+      <FormGroup>
+        <button type="button" onClick={handleAdd} className="btn-default block">
+          <i className="fas fa-plus-circle" />
+          {' '}
+          &quot;報告する内容&quot;に追加
+        </button>
+      </FormGroup>
     </>
   );
 };

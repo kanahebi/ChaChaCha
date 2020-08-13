@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormGroup } from './FormGroup';
+import { FormGroup, FormGroupToggle } from './FormGroup';
 
-export const WorkEntity = () => (
+export const WorkForm = () => (
   <>
     <FormGroup label="物件" required>
       <input
@@ -24,7 +24,7 @@ export const WorkEntity = () => (
 
     <FormGroup label="開始時刻" required>
       <input
-        type="text"
+        type="time"
         className="form-control"
         name="works[][start_at]"
         id="start_at"
@@ -33,7 +33,7 @@ export const WorkEntity = () => (
     </FormGroup>
     <FormGroup label="終了時刻" required>
       <input
-        type="text"
+        type="time"
         className="form-control"
         name="works[][end_at]"
         id="end_at"
@@ -41,14 +41,14 @@ export const WorkEntity = () => (
       />
     </FormGroup>
 
-    <FormGroup label="休憩を含む">
+    <FormGroupToggle label="休憩を含む">
       <input
-        type="text"
+        type="checkbox"
         className="form-control"
         name="works[][include_rest]"
         id="include_rest"
         value="1"
       />
-    </FormGroup>
+    </FormGroupToggle>
   </>
 );
