@@ -24,3 +24,7 @@
     border: 1px solid $color-base-border;
   }
 }
+
+.form-group + .form-group {
+  margin-top: 1rem;
+}

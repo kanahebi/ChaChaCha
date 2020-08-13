@@ -8,20 +8,7 @@
   <% end %>
 
   <%= render "shared/section", title: "2. 報告内容を編集" do %>
-
-
-
-    <%= text_field_tag "works[][work_content_id]", 1 %>
-    <%= text_field_tag "works[][work_property_id]", 1 %>
-    <%= text_field_tag "works[][start_at]", 1 %>
-    <%= text_field_tag "works[][end_at]", 1 %>
-    <%= text_field_tag "works[][include_rest]", 1 %>
-
-    <%= text_field_tag "works[][work_content_id]", 2 %>
-    <%= text_field_tag "works[][work_property_id]", 2 %>
-    <%= text_field_tag "works[][start_at]", 2 %>
-    <%= text_field_tag "works[][end_at]", 2 %>
-    <%= text_field_tag "works[][include_rest]", 2 %>
+    <%= react_component("DailyReportWorksForm") %>
   <% end %>
 
   <%= render "shared/section", title: "3. ありがとうを送る" do %>
