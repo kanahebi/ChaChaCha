@@ -13,6 +13,7 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
 
   const handleAdd = () => {
     setWorks([...works, newWork]);
+    // フォームをリセット
     setNewWork({
       id: null,
       workContentId: null,
