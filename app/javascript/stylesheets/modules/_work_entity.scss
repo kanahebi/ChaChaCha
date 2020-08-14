@@ -1,0 +1,40 @@
+.work-entity {
+  display: flex;
+  position: relative;
+  padding: 1rem 0;
+
+  + .work-entity {
+    border-top: 1px solid $color-base-border;
+  }
+
+  .operation {
+    min-width: 3rem;
+
+    .delete-button {
+      color: $color-danger;
+      font-size: 1.4rem;
+    }
+  }
+
+  .body {
+    flex-grow: 1;
+  }
+
+  .work-range {
+    font-weight: bold;
+  }
+
+  .work-content,
+  .work-property {
+    .icon {
+      color: $color-base-text;
+    }
+  }
+
+  .include-rest {
+    position: absolute;
+    top: 1rem;
+    right: $spacer;
+    color: $color-base-text;
+  }
+}

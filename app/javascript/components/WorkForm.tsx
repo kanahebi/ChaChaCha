@@ -12,7 +12,7 @@ export const WorkForm = ({ newWork, setNewWork }) => (
       <input
         type="text"
         className="form-control"
-        value={newWork?.workContentId}
+        value={newWork?.workContentId || ''}
         onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.value })}
       />
     </FormGroup>
@@ -20,7 +20,7 @@ export const WorkForm = ({ newWork, setNewWork }) => (
       <input
         type="text"
         className="form-control"
-        value={newWork?.workPropertyId}
+        value={newWork?.workPropertyId || ''}
         onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.value })}
       />
     </FormGroup>
@@ -45,7 +45,7 @@ export const WorkForm = ({ newWork, setNewWork }) => (
       <input
         type="checkbox"
         className="form-control"
-        value={newWork?.includeRest}
+        checked={newWork?.includeRest}
         onChange={(ev) => setNewWork({ ...newWork, includeRest: ev.target.checked })}
       />
     </FormGroupToggle>

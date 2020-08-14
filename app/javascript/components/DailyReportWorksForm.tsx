@@ -9,6 +9,13 @@ const DailyReportWorksForm = () => {
 
   const handleAdd = () => {
     setWorks([...works, newWork]);
+    setNewWork({
+      workContentId: null,
+      workPropertyId: null,
+      startAt: '',
+      endAt: '',
+      includeRest: false,
+    });
   };
 
   return (
