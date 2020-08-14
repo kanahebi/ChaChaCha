@@ -17,7 +17,7 @@ class DailyReportsController < ApplicationController
   def new
     authorize DailyReport
 
-    @daily_report = DailyReport.new
+    @daily_report = DailyReport.new(date: Time.current)
   end
 
   # GET /daily_reports/1/edit
@@ -29,18 +29,25 @@ class DailyReportsController < ApplicationController
   def create
     authorize DailyReport
 
-    raise
+    @daily_report = current_user.daily_reports.build(daily_report_params)
 
-    @daily_report = DailyReport.new(daily_report_params)
+    works_params[:works].each do |work_param|
+      work = @daily_report.works.build(work_param)
+      work.start_at.change(
+        hour: work_param[:start_at].split(":").first,
+        min: work_param[:start_at].split(":").last
+      )
+      work.end_at.change(
+        hour: work_param[:end_at].split(":").first,
+        min: work_param[:end_at].split(":").last
+      )
+    end
+    @daily_report.build_arigatona(arigatona_params[:arigatona])
 
-    respond_to do |format|
-      if @daily_report.save
-        format.html { redirect_to @daily_report, notice: 'Daily report was successfully created.' }
-        format.json { render :show, status: :created, location: @daily_report }
-      else
-        format.html { render :new }
-        format.json { render json: @daily_report.errors, status: :unprocessable_entity }
-      end
+    if @daily_report.save
+      redirect_to root_url, notice: 'Daily report was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -78,24 +85,27 @@ class DailyReportsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def daily_report_params
     params.require(:daily_report).permit(
+      :date,
       :memo
     )
   end
 
   def works_params
-    params.require(:works).permit(
-      :work_content_id,
-      :work_property_id,
-      :start_at,
-      :end_at,
-      :include_rest
+    params.permit(
+      works: [
+        :work_content_id,
+        :work_property_id,
+        :start_at,
+        :end_at,
+        :include_rest
+      ]
     )
   end
 
   def arigatona_params
     params.require(:arigatona).permit(
       :user_id,
-      :comment,
+      :comment
     )
   end
 end

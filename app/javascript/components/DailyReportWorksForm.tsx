@@ -21,7 +21,13 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
       startAt: '',
       endAt: '',
       includeRest: false,
+      workContent: null,
+      workProperty: null,
     });
+  };
+
+  const handleDelete = (addedWork: Work) => {
+    setWorks(works.filter((work) => work.workContentId !== addedWork.workContentId));
   };
 
   return (
@@ -39,7 +45,13 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
           &quot;報告する内容&quot;に追加
         </button>
       </FormGroup>
-      {works.map((work) => <WorkEntity key={work.workPropertyId} work={work} />)}
+      {works.map((work) => (
+        <WorkEntity
+          key={work.workPropertyId}
+          work={work}
+          handleDelete={handleDelete}
+        />
+      ))}
     </>
   );
 };

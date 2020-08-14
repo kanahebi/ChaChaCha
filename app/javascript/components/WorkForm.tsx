@@ -15,9 +15,17 @@ export const WorkForm = ({
     <FormGroup label="物件" required>
       <select
         className="form-control"
-        onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.value })}
+        onChange={(ev) => setNewWork(
+          {
+            ...newWork,
+            workContentId: ev.target.value as unknown as number,
+            workContent: {
+              name: ev.target.options[ev.target.selectedIndex].innerText,
+            },
+          },
+        )}
       >
-        <option disabled>---</option>
+        <option disabled selected>---</option>
         {
             workContents.map((workContent) => (
               <option key={workContent.id} value={workContent.id}>
@@ -30,9 +38,17 @@ export const WorkForm = ({
     <FormGroup label="内容" required>
       <select
         className="form-control"
-        onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.value })}
+        onChange={(ev) => setNewWork(
+          {
+            ...newWork,
+            workPropertyId: ev.target.value as unknown as number,
+            workProperty: {
+              name: ev.target.options[ev.target.selectedIndex].innerText,
+            },
+          },
+        )}
       >
-        <option disabled>---</option>
+        <option disabled selected>---</option>
         {
             workProperties.map((workProperty) => (
               <option key={workProperty.id} value={workProperty.id}>

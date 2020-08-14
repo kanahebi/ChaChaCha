@@ -10,6 +10,8 @@ interface Work {
   startAt: string
   endAt: string
   includeRest: boolean
+  workContent: WorkContent
+  workProperty: WorkProperty
 }
 
 interface WorkContent {
