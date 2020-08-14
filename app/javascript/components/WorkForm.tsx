@@ -2,27 +2,31 @@ import React from 'react';
 import { FormGroup, FormGroupToggle } from './FormGroup';
 
 interface IWorkForm {
+  workContents: WorkContent[]
+  workProperties: WorkProperty[]
   newWork: Work
   setNewWork: (work: Work) => void
 }
 
-export const WorkForm = ({ newWork, setNewWork }) => (
+export const WorkForm = ({
+  workContents, workProperties, newWork, setNewWork,
+}: IWorkForm) => (
   <>
     <FormGroup label="物件" required>
-      <input
-        type="text"
+      <select
         className="form-control"
-        value={newWork?.workContentId || ''}
-        onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.value })}
-      />
+        onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.selectedIndex })}
+      >
+        {workContents.map((workContent) => <option value={workContent.id}>{workContent.name}</option>)}
+      </select>
     </FormGroup>
     <FormGroup label="内容" required>
-      <input
-        type="text"
+      <select
         className="form-control"
-        value={newWork?.workPropertyId || ''}
-        onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.value })}
-      />
+        onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.selectedIndex })}
+      >
+        {workProperties.map((workProperty) => <option value={workProperty.id}>{workProperty.name}</option>)}
+      </select>
     </FormGroup>
     <FormGroup label="開始時刻" required>
       <input

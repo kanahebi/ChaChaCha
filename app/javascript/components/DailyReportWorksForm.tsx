@@ -10,6 +10,7 @@ const DailyReportWorksForm = ({ workContents, workProperties }) => {
   const handleAdd = () => {
     setWorks([...works, newWork]);
     setNewWork({
+      id: null,
       workContentId: null,
       workPropertyId: null,
       startAt: '',
@@ -20,7 +21,12 @@ const DailyReportWorksForm = ({ workContents, workProperties }) => {
 
   return (
     <>
-      <WorkForm newWork={newWork} setNewWork={setNewWork} />
+      <WorkForm
+        workContents={workContents}
+        workProperties={workProperties}
+        newWork={newWork}
+        setNewWork={setNewWork}
+      />
       <FormGroup>
         <button type="button" onClick={handleAdd} className="btn-default block">
           <i className="fas fa-plus-circle" />
