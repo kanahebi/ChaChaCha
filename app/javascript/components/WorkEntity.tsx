@@ -2,12 +2,13 @@ import React from 'react';
 
 interface IWorkEntity {
   work: Work
+  handleDelete: (addedWork: Work) => void
 }
 
-export const WorkEntity = ({ work }: IWorkEntity) => (
+export const WorkEntity = ({ work, handleDelete }: IWorkEntity) => (
   <div className="work-entity">
     <div className="operation">
-      <button type="button" className="delete-button">
+      <button type="button" className="delete-button" onClick={() => handleDelete(work)}>
         <i className="fas fa-minus-circle" />
       </button>
     </div>
@@ -20,12 +21,12 @@ export const WorkEntity = ({ work }: IWorkEntity) => (
       <div className="work-content">
         <i className="icon fab fa-font-awesome-flag" />
         {' '}
-        {work.workContentId}
+        {work.workContent.name}
       </div>
       <div className="work-property">
         <i className="icon fas fa-list" />
         {' '}
-        {work.workPropertyId}
+        {work.workProperty.name}
       </div>
       {
         work.includeRest && (

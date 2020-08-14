@@ -1,3 +1,8 @@
+interface User {
+  id: number
+  name: string
+}
+
 interface Work {
   id: number
   workContentId: number
@@ -5,6 +10,8 @@ interface Work {
   startAt: string
   endAt: string
   includeRest: boolean
+  workContent: WorkContent
+  workProperty: WorkProperty
 }
 
 interface WorkContent {
@@ -21,4 +28,10 @@ interface WorkProperty {
   name: string
   code: string
   active: boolean
+}
+
+interface Department {
+  id: number
+  clientId: number
+  name: string
 }
