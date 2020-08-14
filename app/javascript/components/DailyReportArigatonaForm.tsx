@@ -1,13 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import { FormGroup } from './FormGroup';
-import { WorkForm } from './WorkForm';
+import { useUsers } from '../hooks/api';
 
 interface IDailyReportArigatonaForm {
   departments: Department[]
 }
 const DailyReportArigatonaForm = ({ departments }: IDailyReportArigatonaForm) => {
+  const [selectedDepartmentId, setSelectedDepartmentId] = useState<number>(departments[0].id);
+  const { users } = useUsers({ departmentId: selectedDepartmentId });
   const handleChangeDepartment = (ev: ChangeEvent) => {
-    console.log(ev.target.value);
+    setSelectedDepartmentId(ev.target.value);
   };
 
   return (
@@ -24,7 +26,16 @@ const DailyReportArigatonaForm = ({ departments }: IDailyReportArigatonaForm) =>
         </FormGroup>
       </div>
       <div className="l-col col-6">
-        b
+        <FormGroup>
+          <select className="form-control">
+            {users
+              && users.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
+              ))}
+          </select>
+        </FormGroup>
       </div>
     </div>
   );

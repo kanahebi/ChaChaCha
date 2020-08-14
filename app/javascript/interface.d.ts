@@ -1,3 +1,8 @@
+interface User {
+  id: number
+  name: string
+}
+
 interface Work {
   id: number
   workContentId: number

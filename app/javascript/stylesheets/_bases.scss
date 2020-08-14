@@ -54,6 +54,9 @@ hr {
   border-top: 2px solid $color-base-border;
 }
 
+input,
+select,
+textarea,
 button {
   border: 0;
   background-color: transparent;
