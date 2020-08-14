@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :daily_reports, only: [:new, :create]
 
   resource :session, only: [:new, :create, :destroy]
+
+  namespace :api do
+    resources :users, only: [:index]
+  end
 end
