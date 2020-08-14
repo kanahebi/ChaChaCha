@@ -8,7 +8,13 @@
   <% end %>
 
   <%= render "shared/section", title: "2. 報告内容を編集" do %>
-    <%= react_component("DailyReportWorksForm") %>
+    <%= react_component(
+      "DailyReportWorksForm",
+      {
+        work_contents: current_user.client&.work_contents&.map(&:as_json),
+        work_properties: current_user.client&.work_properties&.map(&:as_json),
+      },
+      camelize_props: true) %>
   <% end %>
 
   <%= render "shared/section", title: "3. ありがとうを送る" do %>
