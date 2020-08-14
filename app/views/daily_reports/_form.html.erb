@@ -18,6 +18,17 @@
   <% end %>
 
   <%= render "shared/section", title: "3. ありがとうを送る" do %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= react_component(
+        "DailyReportArigatonaForm",
+        {
+          departments: current_user.client&.departments
+        },
+        camelize_props: true) %>
+    <% end %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= form.text_area :memo, class: 'form-control', rows: 3 %>
+    <% end %>
   <% end %>
 
   <%= render "shared/section", title: "4. 連絡事項" do %>

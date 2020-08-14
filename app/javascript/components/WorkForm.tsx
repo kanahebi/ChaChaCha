@@ -20,7 +20,7 @@ export const WorkForm = ({
         <option disabled>---</option>
         {
             workContents.map((workContent) => (
-              <option value={workContent.id}>
+              <option key={workContent.id} value={workContent.id}>
                 {workContent.name}
               </option>
             ))
@@ -35,7 +35,7 @@ export const WorkForm = ({
         <option disabled>---</option>
         {
             workProperties.map((workProperty) => (
-              <option value={workProperty.id}>
+              <option key={workProperty.id} value={workProperty.id}>
                 {workProperty.name}
               </option>
             ))

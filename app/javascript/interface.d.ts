@@ -22,3 +22,9 @@ interface WorkProperty {
   code: string
   active: boolean
 }
+
+interface Department {
+  id: number
+  clientId: number
+  name: string
+}
