@@ -5,12 +5,36 @@ interface IWorkEntity {
 }
 
 export const WorkEntity = ({ work }: IWorkEntity) => (
-  <>
-    <div>{work.workContentId}</div>
-    <div>{work.workPropertyId}</div>
-    <div>{work.startAt}</div>
-    <div>{work.endAt}</div>
-    <div>{work.includeRest}</div>
+  <div className="work-entity">
+    <div className="operation">
+      <button type="button" className="delete-button">
+        <i className="fas fa-minus-circle" />
+      </button>
+    </div>
+    <div className="body">
+      <div className="work-range">
+        <span>{work.startAt}</span>
+        -
+        <span>{work.endAt}</span>
+      </div>
+      <div className="work-content">
+        <i className="icon fab fa-font-awesome-flag" />
+        {' '}
+        {work.workContentId}
+      </div>
+      <div className="work-property">
+        <i className="icon fas fa-list" />
+        {' '}
+        {work.workPropertyId}
+      </div>
+      {
+        work.includeRest && (
+        <div className="include-rest">
+          <i className="fas fa-utensils" />
+        </div>
+        )
+      }
+    </div>
     <input
       type="hidden"
       className="form-control"
@@ -41,5 +65,5 @@ export const WorkEntity = ({ work }: IWorkEntity) => (
       name="works[][include_rest]"
       value={work.includeRest ? 1 : 0}
     />
-  </>
+  </div>
 );
