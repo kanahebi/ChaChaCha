@@ -17,6 +17,7 @@ export const WorkForm = ({
         className="form-control"
         onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.value })}
       >
+        <option disabled>---</option>
         {
             workContents.map((workContent) => (
               <option value={workContent.id}>
@@ -31,6 +32,7 @@ export const WorkForm = ({
         className="form-control"
         onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.value })}
       >
+        <option disabled>---</option>
         {
             workProperties.map((workProperty) => (
               <option value={workProperty.id}>
