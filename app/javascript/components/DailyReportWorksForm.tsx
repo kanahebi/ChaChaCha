@@ -3,7 +3,11 @@ import { WorkEntity } from './WorkEntity';
 import { FormGroup } from './FormGroup';
 import { WorkForm } from './WorkForm';
 
-const DailyReportWorksForm = ({ workContents, workProperties }) => {
+interface IDailyReportWorksForm {
+  workContents: WorkContent[]
+  workProperties: WorkProperty[]
+}
+const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWorksForm) => {
   const [works, setWorks] = useState<Work[]>([]);
   const [newWork, setNewWork] = useState<Work | null>();
 
