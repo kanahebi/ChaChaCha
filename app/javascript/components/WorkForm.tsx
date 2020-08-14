@@ -15,7 +15,7 @@ export const WorkForm = ({
     <FormGroup label="物件" required>
       <select
         className="form-control"
-        onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.selectedIndex })}
+        onChange={(ev) => setNewWork({ ...newWork, workContentId: ev.target.value })}
       >
         {
             workContents.map((workContent) => (
@@ -29,7 +29,7 @@ export const WorkForm = ({
     <FormGroup label="内容" required>
       <select
         className="form-control"
-        onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.selectedIndex })}
+        onChange={(ev) => setNewWork({ ...newWork, workPropertyId: ev.target.value })}
       >
         {
             workProperties.map((workProperty) => (
