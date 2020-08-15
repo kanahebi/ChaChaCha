@@ -5,18 +5,18 @@ interface IWorkForm {
   workContents: WorkContent[]
   workProperties: WorkProperty[]
   newWork: Work
-  setNewWork: (work: Work) => void
+  handleChangeNewWork: (work: Work) => void
 }
 
 export const WorkForm = ({
-  workContents, workProperties, newWork, setNewWork,
+  workContents, workProperties, newWork, handleChangeNewWork,
 }: IWorkForm) => (
   <>
     <FormGroup label="物件" required>
       <select
         className="form-control"
         value={newWork?.workContentId}
-        onChange={(ev) => setNewWork(
+        onChange={(ev) => handleChangeNewWork(
           {
             ...newWork,
             workContentId: ev.target.value as unknown as number,
@@ -43,7 +43,7 @@ export const WorkForm = ({
       <select
         className="form-control"
         value={newWork?.workPropertyId}
-        onChange={(ev) => setNewWork(
+        onChange={(ev) => handleChangeNewWork(
           {
             ...newWork,
             workPropertyId: ev.target.value as unknown as number,
@@ -71,7 +71,7 @@ export const WorkForm = ({
         type="time"
         className="form-control"
         value={newWork?.startAt}
-        onChange={(ev) => setNewWork({ ...newWork, startAt: ev.target.value })}
+        onChange={(ev) => handleChangeNewWork({ ...newWork, startAt: ev.target.value })}
       />
     </FormGroup>
     <FormGroup label="終了時刻" required>
@@ -79,7 +79,7 @@ export const WorkForm = ({
         type="time"
         className="form-control"
         value={newWork?.endAt}
-        onChange={(ev) => setNewWork({ ...newWork, endAt: ev.target.value })}
+        onChange={(ev) => handleChangeNewWork({ ...newWork, endAt: ev.target.value })}
       />
     </FormGroup>
 
@@ -88,7 +88,7 @@ export const WorkForm = ({
         type="checkbox"
         className="form-control"
         checked={newWork?.includeRest}
-        onChange={(ev) => setNewWork({ ...newWork, includeRest: ev.target.checked })}
+        onChange={(ev) => handleChangeNewWork({ ...newWork, includeRest: ev.target.checked })}
       />
     </FormGroupToggle>
   </>
