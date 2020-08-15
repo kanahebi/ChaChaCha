@@ -15,6 +15,7 @@ export const WorkForm = ({
     <FormGroup label="物件" required>
       <select
         className="form-control"
+        value={newWork?.workContentId}
         onChange={(ev) => setNewWork(
           {
             ...newWork,
@@ -25,10 +26,13 @@ export const WorkForm = ({
           },
         )}
       >
-        <option disabled selected>---</option>
+        <option value={0}>---</option>
         {
             workContents.map((workContent) => (
-              <option key={workContent.id} value={workContent.id}>
+              <option
+                key={workContent.id}
+                value={workContent.id}
+              >
                 {workContent.name}
               </option>
             ))
@@ -38,6 +42,7 @@ export const WorkForm = ({
     <FormGroup label="内容" required>
       <select
         className="form-control"
+        value={newWork?.workPropertyId}
         onChange={(ev) => setNewWork(
           {
             ...newWork,
@@ -48,10 +53,13 @@ export const WorkForm = ({
           },
         )}
       >
-        <option disabled selected>---</option>
+        <option value={0}>---</option>
         {
             workProperties.map((workProperty) => (
-              <option key={workProperty.id} value={workProperty.id}>
+              <option
+                key={workProperty.id}
+                value={workProperty.id}
+              >
                 {workProperty.name}
               </option>
             ))

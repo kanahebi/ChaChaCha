@@ -16,8 +16,8 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
     // フォームをリセット
     setNewWork({
       id: null,
-      workContentId: null,
-      workPropertyId: null,
+      workContentId: 0,
+      workPropertyId: 0,
       startAt: '',
       endAt: '',
       includeRest: false,
