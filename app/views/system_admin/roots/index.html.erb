@@ -1,1 +1,18 @@
-<%= link_to 'クライアント一覧', system_admin_clients_path %>
+<div class="l-container">
+  <%= render "shared/section", title: "システム管理者画面" do %>
+    <ul class="iconic-list">
+      <li class="iconic-list-item">
+        <%= link_to system_admin_clients_path, class: "iconic-list-anchor" do %>
+          <div class="icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="body">
+            クライアント一覧
+          </div>
+          <i class="fas fa-chevron-right arrow-icon"></i>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+  <%= link_to 'ログアウト',session_path, method: :delete %>
+</div>
