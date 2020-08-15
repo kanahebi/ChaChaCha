@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
   end
 
+  namespace :client_admin do
+    root "roots#index"
+  end
+
   namespace :system_admin do
     root "roots#index"
 
