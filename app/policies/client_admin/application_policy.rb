@@ -11,15 +11,15 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def index?
-    user.system_admin? || user.client_admin?
+    false
   end
 
   def show?
-    user.system_admin? || user.client_admin?
+    false
   end
 
   def create?
-    user.system_admin? || user.client_admin?
+    false
   end
 
   def new?
@@ -27,7 +27,7 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def update?
-    user.system_admin? || user.client_admin?
+    false
   end
 
   def edit?
@@ -35,7 +35,7 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def destroy?
-    user.system_admin? || user.client_admin?
+    false
   end
 
   class Scope
