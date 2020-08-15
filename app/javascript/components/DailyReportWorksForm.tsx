@@ -10,6 +10,20 @@ interface IDailyReportWorksForm {
 const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWorksForm) => {
   const [works, setWorks] = useState<Work[]>([]);
   const [newWork, setNewWork] = useState<Work | null>();
+  const [addEnable, setAddEnable] = useState(false);
+
+  const isValidWork = (work: Work) => {
+    if (!work.workContentId || work.workContentId === '0') return false;
+    if (!work.workPropertyId || work.workPropertyId === '0') return false;
+    if (!work.startAt) return false;
+    if (!work.endAt) return false;
+
+    return true;
+  };
+  const handleChangeNewWork = (work: Work) => {
+    setNewWork(work);
+    setAddEnable(isValidWork(work));
+  };
 
   const handleAdd = () => {
     setWorks([...works, newWork]);
@@ -36,10 +50,10 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
         workContents={workContents}
         workProperties={workProperties}
         newWork={newWork}
-        setNewWork={setNewWork}
+        handleChangeNewWork={handleChangeNewWork}
       />
       <FormGroup>
-        <button type="button" onClick={handleAdd} className="btn-default block">
+        <button type="button" onClick={handleAdd} className="btn-default block" disabled={!addEnable}>
           <i className="fas fa-plus-circle" />
           {' '}
           &quot;報告する内容&quot;に追加
