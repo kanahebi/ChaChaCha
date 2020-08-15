@@ -13,16 +13,16 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
   const [addEnable, setAddEnable] = useState(false);
 
   const isValidWork = (work: Work) => {
-    if (!work.workContentId || work.workContentId === 0) return false;
-    if (!work.workPropertyId || work.workPropertyId === 0) return false;
+    if (!work.workContentId || work.workContentId === '0') return false;
+    if (!work.workPropertyId || work.workPropertyId === '0') return false;
     if (!work.startAt) return false;
     if (!work.endAt) return false;
 
     return true;
   };
-  const handleChangeNewWork = (newWork: Work) => {
-    setNewWork(newWork);
-    setAddEnable(isValidWork(newWork));
+  const handleChangeNewWork = (work: Work) => {
+    setNewWork(work);
+    setAddEnable(isValidWork(work));
   };
 
   const handleAdd = () => {
