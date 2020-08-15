@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session_rotation
       session[:user_id] = @session.user.id
 
-      redirect_to root_url
+      redirect_to view_context.root_path_judged_by_role
     else
       render :new
     end
