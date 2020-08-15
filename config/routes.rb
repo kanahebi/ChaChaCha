@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   namespace :system_admin do
     root "roots#index"
+
+    resources :clients, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 end
