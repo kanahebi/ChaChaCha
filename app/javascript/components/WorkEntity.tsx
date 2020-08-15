@@ -2,13 +2,14 @@ import React from 'react';
 
 interface IWorkEntity {
   work: Work
-  handleDelete: (addedWork: Work) => void
+  handleDelete: (index: number) => void
+  index: number
 }
 
-export const WorkEntity = ({ work, handleDelete }: IWorkEntity) => (
+export const WorkEntity = ({ work, handleDelete, index }: IWorkEntity) => (
   <div className="work-entity">
     <div className="operation">
-      <button type="button" className="delete-button" onClick={() => handleDelete(work)}>
+      <button type="button" className="delete-button" onClick={() => handleDelete(index)}>
         <i className="fas fa-minus-circle" />
       </button>
     </div>
