@@ -25,7 +25,7 @@ class SystemAdmin::ClientsController < ApplicationController
     @client = Client.new(client_params)
 
     if @client.save
-      redirect_to edit_system_admin_client_url(@client), notice: t("helpers.done.create")
+      redirect_to system_admin_clients_url, notice: t("helpers.done.create")
     else
       render :new
     end
@@ -35,7 +35,7 @@ class SystemAdmin::ClientsController < ApplicationController
     authorize [:system_admin, @client]
 
     if @client.update(client_params)
-      redirect_to edit_system_admin_client_url, notice: t("helpers.done.update")
+      redirect_to system_admin_clients_url, notice: t("helpers.done.update")
     else
       render :edit
     end
