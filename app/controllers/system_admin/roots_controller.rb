@@ -1,5 +1,5 @@
 class SystemAdmin::RootsController < ApplicationController
   def index
-    authorize :root
+    authorize [:system_admin, :root]
   end
 end
