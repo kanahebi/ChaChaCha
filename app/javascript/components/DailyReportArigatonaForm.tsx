@@ -16,8 +16,8 @@ const DailyReportArigatonaForm = ({ departments }: IDailyReportArigatonaForm) =>
     <div className="l-row">
       <div className="l-col col-6">
         <FormGroup>
-          <select className="form-control" onChange={handleChangeDepartment}>
-            <option disabled selected>---</option>
+          <select className="form-control" onChange={handleChangeDepartment} value={0}>
+            <option value={0}>---</option>
             {departments.map((department) => (
               <option key={department.id} value={department.id}>
                 {department.name}
@@ -28,8 +28,8 @@ const DailyReportArigatonaForm = ({ departments }: IDailyReportArigatonaForm) =>
       </div>
       <div className="l-col col-6">
         <FormGroup>
-          <select name="arigatona[user_id]" className="form-control" required>
-            <option disabled selected>---</option>
+          <select name="arigatona[user_id]" className="form-control" required defaultValue={0}>
+            <option value={0}>---</option>
             {users
               && users.map((user) => (
                 <option key={user.id} value={user.id}>
