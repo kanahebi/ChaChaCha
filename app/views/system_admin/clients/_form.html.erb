@@ -1,0 +1,17 @@
+<%= render "shared/section", title: "クライアント登録" do %>
+  <%= form_with(model: [:system_admin, client], local: true) do |form| %>
+    <%= render "shared/errors", object: form.object %>
+
+    <%= render "shared/form_group", form: form, name: :name, required: true do %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :users_limit do %>
+      <%= form.number_field :users_limit, class: 'form-control' %>
+    <% end %>
+
+    <div class="submit-container">
+      <%= form.submit class: 'btn-primary block rounded' %>
+    </div>
+  <% end %>
+<% end %>

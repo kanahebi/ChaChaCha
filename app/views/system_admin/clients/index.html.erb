@@ -1,0 +1,26 @@
+<table border=1>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= Client.human_attribute_name(:name) %></th>
+      <th><%= Client.human_attribute_name(:users_limit) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.id %></td>
+        <td><%= client.name %></td>
+        <td><%= client.users_limit %></td>
+        <td>
+          <div>
+            <%= link_to '編集', edit_system_admin_client_path(client) %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '新規作成', new_system_admin_client_path %>

@@ -148,6 +148,10 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
+    done:
+      create: 登録しました。
+      update: 更新しました。
+      destroy: 削除しました。
   number:
     currency:
       format:
