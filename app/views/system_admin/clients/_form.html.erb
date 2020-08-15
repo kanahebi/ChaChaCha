@@ -1,4 +1,4 @@
-<%= render "shared/section", title: "クライアント登録" do %>
+<%= render "shared/section", title: title do %>
   <%= form_with(model: [:system_admin, client], local: true) do |form| %>
     <%= render "shared/errors", object: form.object %>
 
