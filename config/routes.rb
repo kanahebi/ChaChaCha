@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, only: [:index]
   end
+
+  namespace :system_admin do
+    root "roots#index"
+  end
 end
