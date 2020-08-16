@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WorkEntity } from './WorkEntity';
+import { WorkEntity, WorkEntityEmpty } from './WorkEntity';
 import { FormGroup } from './FormGroup';
 import { WorkForm } from './WorkForm';
 
@@ -59,14 +59,16 @@ const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWork
           &quot;報告する内容&quot;に追加
         </button>
       </FormGroup>
-      {works.map((work, index) => (
-        <WorkEntity
-          key={index}
-          work={work}
-          handleDelete={handleDelete}
-          index={index}
-        />
-      ))}
+      {works.length === 0
+        ? <WorkEntityEmpty />
+        : works.map((work, index) => (
+          <WorkEntity
+            key={index}
+            work={work}
+            handleDelete={handleDelete}
+            index={index}
+          />
+        ))}
     </>
   );
 };

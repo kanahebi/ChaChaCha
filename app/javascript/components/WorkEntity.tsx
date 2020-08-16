@@ -69,3 +69,14 @@ export const WorkEntity = ({ work, handleDelete, index }: IWorkEntity) => (
     />
   </div>
 );
+
+export const WorkEntityEmpty = () => (
+  <div className="work-entity">
+    <div className="operation">
+      <i className="fas fa-info-circle" />
+    </div>
+    <div className="body">
+      まだ追加されていません
+    </div>
+  </div>
+);

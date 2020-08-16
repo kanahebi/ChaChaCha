@@ -1,6 +1,7 @@
 .work-entity {
   display: flex;
   position: relative;
+  align-items: center;
   padding: 1rem 0;
 
   + .work-entity {
@@ -9,6 +10,8 @@
 
   .operation {
     min-width: 3rem;
+    color: $color-danger;
+    font-size: 1.4rem;
 
     .delete-button {
       color: $color-danger;
