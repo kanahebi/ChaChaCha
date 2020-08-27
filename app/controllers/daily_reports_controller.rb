@@ -1,5 +1,5 @@
 class DailyReportsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :edit, :update]
   before_action :set_daily_report, only: [:show, :edit, :update, :destroy]
 
   # GET /daily_reports
@@ -22,6 +22,7 @@ class DailyReportsController < ApplicationController
 
   # GET /daily_reports/1/edit
   def edit
+    authorize @daily_report
   end
 
   # POST /daily_reports
