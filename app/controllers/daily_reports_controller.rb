@@ -52,7 +52,7 @@ class DailyReportsController < ApplicationController
       assign_arigatona(@daily_report)
 
       if @daily_report.update(daily_report_params)
-        redirect_to @daily_report, notice: 'Daily report was successfully updated.'
+        redirect_to edit_daily_report_path(@daily_report), notice: 'Daily report was successfully updated.'
       else
         render :edit
       end
@@ -76,7 +76,7 @@ class DailyReportsController < ApplicationController
   def assign_works!(daily_report)
     # 保存済みの場合はパラメタに存在しないレコードを削除する
     if daily_report.persisted?
-      parameter_work_ids = works_params[:works].map { work[:id] }
+      parameter_work_ids = works_params[:works].map { |work| work[:id] }
       daily_report.works.each do |work|
         next if parameter_work_ids.include?(work.id.to_s)
 
@@ -85,12 +85,21 @@ class DailyReportsController < ApplicationController
     end
 
     works_params[:works].each do |work_param|
-      daily_report.works.build(work_param)
+      work_param_id = work_param[:id]
+      if work_param_id.present?
+        daily_report.works.detect { |work| work.id.to_s == work_param_id }.assign_attributes(work_param)
+      else
+        daily_report.works.build(work_param)
+      end
     end
   end
 
   def assign_arigatona(daily_report)
-    daily_report.build_arigatona(arigatona_params)
+    if daily_report.arigatona
+      daily_report.arigatona.assign_attributes(arigatona_params)
+    else
+      arigatona.build_arigatona(arigatona_params)
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
