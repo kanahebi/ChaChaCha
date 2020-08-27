@@ -11,6 +11,7 @@
     <%= react_component(
       "DailyReportWorksForm",
       {
+        dailyReportWorks: @daily_report.works.map(&:as_json_for_form),
         work_contents: current_user.client&.work_contents&.map(&:as_json),
         work_properties: current_user.client&.work_properties&.map(&:as_json),
       },
