@@ -53,7 +53,8 @@ class ClientAdmin::ApplicationPolicy
       if user.system_admin?
         scope.all
       elsif user.client_admin?
-        scope.where(client_id: user.client_id)
+        scope.all
+        # scope.where(client_id: user.client_id)
       else
         scope.none
       end
