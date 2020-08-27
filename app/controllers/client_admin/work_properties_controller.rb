@@ -51,13 +51,15 @@ class ClientAdmin::WorkPropertiesController < ApplicationController
   private
 
   def set_work_property
-    @work_property = WorkProperty.find(params[:id])
+    @work_property = policy_scope([:client_admin, WorkProperty]).find(params[:id])
   end
 
   def work_property_params
     params.require(:work_property).permit(
-      # :name,
-      # :users_limit
+      :name,
+      :code,
+      :active,
+      :client_id
     )
   end
 end
