@@ -1,6 +1,13 @@
 interface User {
   id: number
   name: string
+  department: Department
+}
+
+interface DailyReport {
+  user: User
+  works: Work[]
+  Arigatona: Arigatona
 }
 
 interface Work {
@@ -34,4 +41,10 @@ interface Department {
   id: number
   clientId: number
   name: string
+}
+
+interface Arigatona {
+  dailyReport: DailyReport
+  user: User
+  comment: string
 }

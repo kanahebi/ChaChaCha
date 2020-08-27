@@ -4,17 +4,19 @@ import { FormGroup } from './FormGroup';
 import { WorkForm } from './WorkForm';
 
 interface IDailyReportWorksForm {
+  dailyReportWorks: Work[]
   workContents: WorkContent[]
   workProperties: WorkProperty[]
 }
-const DailyReportWorksForm = ({ workContents, workProperties }: IDailyReportWorksForm) => {
-  const [works, setWorks] = useState<Work[]>([]);
+// eslint-disable-next-line
+const DailyReportWorksForm = ({ dailyReportWorks, workContents, workProperties }: IDailyReportWorksForm) => {
+  const [works, setWorks] = useState<Work[]>(dailyReportWorks);
   const [newWork, setNewWork] = useState<Work | null>();
   const [addEnable, setAddEnable] = useState(false);
 
   const isValidWork = (work: Work) => {
-    if (!work.workContentId || work.workContentId === '0') return false;
-    if (!work.workPropertyId || work.workPropertyId === '0') return false;
+    if (!work.workContentId || work.workContentId.toString() === '0') return false;
+    if (!work.workPropertyId || work.workPropertyId.toString() === '0') return false;
     if (!work.startAt) return false;
     if (!work.endAt) return false;
 

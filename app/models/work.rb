@@ -10,6 +10,15 @@ class Work < ApplicationRecord
   validate :start_should_be_before_end
   validate :work_time_must_not_over_lap
 
+  def as_json_for_form
+    as_json.merge(
+      start_at: "#{start_at.hour}:#{start_at.min.to_s.rjust(2, "0")}",
+      end_at: "#{end_at.hour}:#{end_at.min.to_s.rjust(2, "0")}",
+      work_content: work_content.as_json,
+      work_property: work_property.as_json
+    )
+  end
+
   private
 
   def start_should_be_before_end

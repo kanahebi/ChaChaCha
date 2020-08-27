@@ -1,5 +1,5 @@
 class DailyReportsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :edit, :update]
   before_action :set_daily_report, only: [:show, :edit, :update, :destroy]
 
   # GET /daily_reports
@@ -22,6 +22,7 @@ class DailyReportsController < ApplicationController
 
   # GET /daily_reports/1/edit
   def edit
+    authorize @daily_report
   end
 
   # POST /daily_reports
@@ -31,18 +32,8 @@ class DailyReportsController < ApplicationController
 
     @daily_report = current_user.daily_reports.build(daily_report_params)
 
-    works_params[:works].each do |work_param|
-      work = @daily_report.works.build(work_param)
-      work.start_at.change(
-        hour: work_param[:start_at].split(":").first,
-        min: work_param[:start_at].split(":").last
-      )
-      work.end_at.change(
-        hour: work_param[:end_at].split(":").first,
-        min: work_param[:end_at].split(":").last
-      )
-    end
-    @daily_report.build_arigatona(arigatona_params[:arigatona])
+    assign_works!(@daily_report)
+    assign_arigatona(@daily_report)
 
     if @daily_report.save
       redirect_to root_url, notice: 'Daily report was successfully created.'
@@ -54,14 +45,22 @@ class DailyReportsController < ApplicationController
   # PATCH/PUT /daily_reports/1
   # PATCH/PUT /daily_reports/1.json
   def update
-    respond_to do |format|
-      if @daily_report.update(daily_report_params)
-        format.html { redirect_to @daily_report, notice: 'Daily report was successfully updated.' }
-        format.json { render :show, status: :ok, location: @daily_report }
-      else
-        format.html { render :edit }
-        format.json { render json: @daily_report.errors, status: :unprocessable_entity }
-      end
+    authorize @daily_report
+
+    # assign_works!がSave前に削除を実行するのでTransactionで囲んで戻れるようにする
+    update_status = false
+    ApplicationRecord.transaction do
+      assign_works!(@daily_report)
+      assign_arigatona(@daily_report)
+      raise ActiveRecord::Rollback unless @daily_report.update(daily_report_params)
+
+      update_status = true
+    end
+
+    if update_status
+      redirect_to edit_daily_report_path(@daily_report), notice: 'Daily report was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -76,6 +75,37 @@ class DailyReportsController < ApplicationController
   end
 
   private
+
+  # パラメタに渡されたworksの情報をdaily_reportに設定する
+  # 保存済みでパラメタに存在しないworkはこのタイミングでdeleteが発行される
+  def assign_works!(daily_report)
+    # 保存済みの場合はパラメタに存在しないレコードを削除する
+    if daily_report.persisted?
+      parameter_work_ids = works_params[:works].map { |work| work[:id] }
+      daily_report.works.each do |work|
+        next if parameter_work_ids.include?(work.id.to_s)
+
+        work.destroy
+      end
+    end
+
+    works_params[:works].each do |work_param|
+      work_param_id = work_param[:id]
+      if work_param_id.present?
+        daily_report.works.detect { |work| work.id.to_s == work_param_id }.assign_attributes(work_param)
+      else
+        daily_report.works.build(work_param)
+      end
+    end
+  end
+
+  def assign_arigatona(daily_report)
+    if daily_report.arigatona
+      daily_report.arigatona.assign_attributes(arigatona_params)
+    else
+      daily_report.build_arigatona(arigatona_params)
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_daily_report
@@ -93,6 +123,7 @@ class DailyReportsController < ApplicationController
   def works_params
     params.permit(
       works: [
+        :id,
         :work_content_id,
         :work_property_id,
         :start_at,
