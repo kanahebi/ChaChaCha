@@ -1,0 +1,17 @@
+<%= form_with(model: client_admin_work_property, local: true) do |form| %>
+  <% if client_admin_work_property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client_admin_work_property.errors.count, "error") %> prohibited this client_admin_work_property from being saved:</h2>
+
+      <ul>
+        <% client_admin_work_property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

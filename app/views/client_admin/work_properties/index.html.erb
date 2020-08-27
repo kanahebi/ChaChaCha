@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Client Admin Work Properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client_admin_work_properties.each do |client_admin_work_property| %>
+      <tr>
+        <td><%= link_to 'Show', client_admin_work_property %></td>
+        <td><%= link_to 'Edit', edit_client_admin_work_property_path(client_admin_work_property) %></td>
+        <td><%= link_to 'Destroy', client_admin_work_property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client Admin Work Property', new_client_admin_work_property_path %>
