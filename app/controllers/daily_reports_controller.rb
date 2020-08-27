@@ -33,15 +33,7 @@ class DailyReportsController < ApplicationController
     @daily_report = current_user.daily_reports.build(daily_report_params)
 
     works_params[:works].each do |work_param|
-      work = @daily_report.works.build(work_param)
-      work.start_at.change(
-        hour: work_param[:start_at].split(":").first,
-        min: work_param[:start_at].split(":").last
-      )
-      work.end_at.change(
-        hour: work_param[:end_at].split(":").first,
-        min: work_param[:end_at].split(":").last
-      )
+      @daily_report.works.build(work_param)
     end
     @daily_report.build_arigatona(arigatona_params[:arigatona])
 
