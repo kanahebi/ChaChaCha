@@ -11,15 +11,15 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def index?
-    false
+    user.system_admin? || user.client_admin?
   end
 
   def show?
-    false
+    user.system_admin? || user.client_admin?
   end
 
   def create?
-    false
+    user.system_admin? || user.client_admin?
   end
 
   def new?
@@ -27,7 +27,7 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def update?
-    false
+    user.system_admin? || user.client_admin?
   end
 
   def edit?
@@ -35,7 +35,7 @@ class ClientAdmin::ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.system_admin? || user.client_admin?
   end
 
   class Scope
@@ -50,7 +50,13 @@ class ClientAdmin::ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      if user.system_admin?
+        scope.all
+      elsif user.client_admin?
+        scope.where(client_id: user.client_id)
+      else
+        scope.none
+      end
     end
   end
 end
