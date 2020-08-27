@@ -47,11 +47,12 @@ class DailyReportsController < ApplicationController
   def update
     authorize @daily_report
 
+    # assign_works!がSave前に削除を実行するのでTransactionで囲んで戻れるようにする
     ApplicationRecord.transaction do
       assign_works!(@daily_report)
       assign_arigatona(@daily_report)
 
-      if @daily_report.update(daily_report_params)
+      if @daily_report.update!(daily_report_params)
         redirect_to edit_daily_report_path(@daily_report), notice: 'Daily report was successfully updated.'
       else
         render :edit
