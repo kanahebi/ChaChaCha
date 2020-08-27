@@ -1,0 +1,18 @@
+<div class="l-container">
+  <div class="arigatona-stack">
+    <% @arigatonas.each do |arigatona| %>
+      <div class="arigatona-item">
+        <div class="date"><%= l arigatona.created_at, format: :long %></div>
+        <div class="from-to">
+          <%= arigatona.daily_report.user.name %>
+          さんから
+          <%= arigatona.user.name %>
+          さんへ
+        </div>
+        <div class="comment">
+          <%= arigatona.comment %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
