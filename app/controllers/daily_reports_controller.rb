@@ -103,7 +103,7 @@ class DailyReportsController < ApplicationController
     if daily_report.arigatona
       daily_report.arigatona.assign_attributes(arigatona_params)
     else
-      arigatona.build_arigatona(arigatona_params)
+      daily_report.build_arigatona(arigatona_params)
     end
   end
 
