@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root "roots#index"
 
-  resources :daily_reports, only: [:new, :create, :edit, :update]
+  resources :daily_reports, only: [:index, :show, :new, :create, :edit, :update]
 
   resource :session, only: [:new, :create, :destroy]
 

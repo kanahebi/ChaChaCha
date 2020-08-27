@@ -5,7 +5,9 @@ class DailyReportsController < ApplicationController
   # GET /daily_reports
   # GET /daily_reports.json
   def index
-    @daily_reports = DailyReport.all
+    authorize DailyReport
+
+    @daily_reports = current_user.daily_reports.order(date: :desc)
   end
 
   # GET /daily_reports/1
