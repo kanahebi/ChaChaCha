@@ -1,0 +1,24 @@
+<%= render "shared/section", title: title do %>
+  <%= form_with(model: [:client_admin, work_property], local: true) do |form| %>
+    <%= render "shared/errors", object: form.object %>
+
+    <%= render "shared/form_group", form: form, name: :name, required: true do %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :code, required: true do %>
+      <%= form.text_field :code, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :active, required: true do %>
+      <%= form.check_box :active, class: 'form-control' %>
+    <% end %>
+
+    <%= form.hidden_field :client_id, value: current_user&.client_id %>
+    <!-- 影山さんはclient_id: nil -->
+
+    <div class="submit-container">
+      <%= form.submit class: 'btn-primary block rounded' %>
+    </div>
+  <% end %>
+<% end %>
