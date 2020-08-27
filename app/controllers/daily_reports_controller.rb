@@ -48,15 +48,19 @@ class DailyReportsController < ApplicationController
     authorize @daily_report
 
     # assign_works!がSave前に削除を実行するのでTransactionで囲んで戻れるようにする
+    update_status = false
     ApplicationRecord.transaction do
       assign_works!(@daily_report)
       assign_arigatona(@daily_report)
+      raise ActiveRecord::Rollback unless @daily_report.update(daily_report_params)
 
-      if @daily_report.update!(daily_report_params)
-        redirect_to edit_daily_report_path(@daily_report), notice: 'Daily report was successfully updated.'
-      else
-        render :edit
-      end
+      update_status = true
+    end
+
+    if update_status
+      redirect_to edit_daily_report_path(@daily_report), notice: 'Daily report was successfully updated.'
+    else
+      render :edit
     end
   end
 
