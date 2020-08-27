@@ -1,6 +1,7 @@
 interface User {
   id: number
   name: string
+  department: Department
 }
 
 interface DailyReport {

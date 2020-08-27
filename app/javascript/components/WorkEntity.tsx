@@ -39,6 +39,11 @@ export const WorkEntity = ({ work, handleDelete, index }: IWorkEntity) => (
     </div>
     <input
       type="hidden"
+      name="works[][id]"
+      value={work.id}
+    />
+    <input
+      type="hidden"
       className="form-control"
       name="works[][work_content_id]"
       value={work.workContentId}

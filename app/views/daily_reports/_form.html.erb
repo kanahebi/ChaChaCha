@@ -23,13 +23,13 @@
       <%= react_component(
         "DailyReportArigatonaForm",
         {
-          dailyReportArigatona: @daily_report.arigatona.as_json,
+          dailyReportArigatona: @daily_report.arigatona&.as_json_for_form || {},
           departments: current_user.client&.departments
         },
         camelize_props: true) %>
     <% end %>
     <%= render "shared/form_group", form: form, name: nil do %>
-      <%= text_area_tag "arigatona[comment]", "", class: 'form-control', rows: 3, required: true %>
+      <%= text_area_tag "arigatona[comment]", @daily_report.arigatona&.comment, class: 'form-control', rows: 3, required: true %>
     <% end %>
   <% end %>
 

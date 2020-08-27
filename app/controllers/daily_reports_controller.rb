@@ -32,10 +32,8 @@ class DailyReportsController < ApplicationController
 
     @daily_report = current_user.daily_reports.build(daily_report_params)
 
-    works_params[:works].each do |work_param|
-      @daily_report.works.build(work_param)
-    end
-    @daily_report.build_arigatona(arigatona_params)
+    assign_works!(@daily_report)
+    assign_arigatona(@daily_report)
 
     if @daily_report.save
       redirect_to root_url, notice: 'Daily report was successfully created.'
@@ -47,13 +45,16 @@ class DailyReportsController < ApplicationController
   # PATCH/PUT /daily_reports/1
   # PATCH/PUT /daily_reports/1.json
   def update
-    respond_to do |format|
+    authorize @daily_report
+
+    ApplicationRecord.transaction do
+      assign_works!(@daily_report)
+      assign_arigatona(@daily_report)
+
       if @daily_report.update(daily_report_params)
-        format.html { redirect_to @daily_report, notice: 'Daily report was successfully updated.' }
-        format.json { render :show, status: :ok, location: @daily_report }
+        redirect_to @daily_report, notice: 'Daily report was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @daily_report.errors, status: :unprocessable_entity }
+        render :edit
       end
     end
   end
@@ -69,6 +70,28 @@ class DailyReportsController < ApplicationController
   end
 
   private
+
+  # パラメタに渡されたworksの情報をdaily_reportに設定する
+  # 保存済みでパラメタに存在しないworkはこのタイミングでdeleteが発行される
+  def assign_works!(daily_report)
+    # 保存済みの場合はパラメタに存在しないレコードを削除する
+    if daily_report.persisted?
+      parameter_work_ids = works_params[:works].map { work[:id] }
+      daily_report.works.each do |work|
+        next if parameter_work_ids.include?(work.id.to_s)
+
+        work.destroy
+      end
+    end
+
+    works_params[:works].each do |work_param|
+      daily_report.works.build(work_param)
+    end
+  end
+
+  def assign_arigatona(daily_report)
+    daily_report.build_arigatona(arigatona_params)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_daily_report
@@ -86,6 +109,7 @@ class DailyReportsController < ApplicationController
   def works_params
     params.permit(
       works: [
+        :id,
         :work_content_id,
         :work_property_id,
         :start_at,
