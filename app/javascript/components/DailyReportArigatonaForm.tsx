@@ -6,6 +6,7 @@ interface IDailyReportArigatonaForm {
   dailyReportArigatona: Arigatona
   departments: Department[]
 }
+// eslint-disable-next-line
 const DailyReportArigatonaForm = ({ dailyReportArigatona, departments }: IDailyReportArigatonaForm) => {
   const [selectedUserId, setSelectedUserId] = useState(dailyReportArigatona?.user?.id || 0);
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<number>(departments[0].id);

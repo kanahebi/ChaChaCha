@@ -8,6 +8,7 @@ interface IDailyReportWorksForm {
   workContents: WorkContent[]
   workProperties: WorkProperty[]
 }
+// eslint-disable-next-line
 const DailyReportWorksForm = ({ dailyReportWorks, workContents, workProperties }: IDailyReportWorksForm) => {
   const [works, setWorks] = useState<Work[]>(dailyReportWorks);
   const [newWork, setNewWork] = useState<Work | null>();
