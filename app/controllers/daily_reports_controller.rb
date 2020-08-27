@@ -35,7 +35,7 @@ class DailyReportsController < ApplicationController
     works_params[:works].each do |work_param|
       @daily_report.works.build(work_param)
     end
-    @daily_report.build_arigatona(arigatona_params[:arigatona])
+    @daily_report.build_arigatona(arigatona_params)
 
     if @daily_report.save
       redirect_to root_url, notice: 'Daily report was successfully created.'

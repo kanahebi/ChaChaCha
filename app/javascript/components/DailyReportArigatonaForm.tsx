@@ -3,9 +3,11 @@ import { FormGroup } from './FormGroup';
 import { useUsers } from '../hooks/api';
 
 interface IDailyReportArigatonaForm {
+  dailyReportArigatona: Arigatona
   departments: Department[]
 }
-const DailyReportArigatonaForm = ({ departments }: IDailyReportArigatonaForm) => {
+const DailyReportArigatonaForm = ({ dailyReportArigatona, departments }: IDailyReportArigatonaForm) => {
+  console.log(dailyReportArigatona);
   const [selectedDepartmentId, setSelectedDepartmentId] = useState<number>(departments[0].id);
   const { users } = useUsers({ departmentId: selectedDepartmentId });
   const handleChangeDepartment = (ev: React.ChangeEvent<HTMLSelectElement>) => {

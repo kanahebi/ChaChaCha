@@ -23,6 +23,7 @@
       <%= react_component(
         "DailyReportArigatonaForm",
         {
+          dailyReportArigatona: @daily_report.arigatona.as_json,
           departments: current_user.client&.departments
         },
         camelize_props: true) %>
