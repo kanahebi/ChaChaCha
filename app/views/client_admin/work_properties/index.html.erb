@@ -3,7 +3,6 @@
     <table border=1>
       <thead>
         <tr>
-          <th>ID</th>
           <th><%= WorkProperty.human_attribute_name(:name) %></th>
           <th><%= WorkProperty.human_attribute_name(:code) %></th>
           <th><%= WorkProperty.human_attribute_name(:active) %></th>
@@ -13,7 +12,6 @@
       <tbody>
         <% @work_properties.each do |property| %>
           <tr>
-            <td><%= property.id %></td>
             <td><%= property.name %></td>
             <td><%= property.code %></td>
             <td><%= property.active %></td>

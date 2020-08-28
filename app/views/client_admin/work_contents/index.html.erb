@@ -3,7 +3,6 @@
     <table border=1>
       <thead>
         <tr>
-          <th>ID</th>
           <th><%= WorkContent.human_attribute_name(:name) %></th>
           <th><%= WorkContent.human_attribute_name(:name_kana) %></th>
           <th><%= WorkContent.human_attribute_name(:active) %></th>
@@ -13,7 +12,6 @@
       <tbody>
         <% @work_contents.each do |content| %>
           <tr>
-            <td><%= content.id %></td>
             <td><%= content.name %></td>
             <td><%= content.name_kana %></td>
             <td><%= content.active %></td>

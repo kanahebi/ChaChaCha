@@ -3,7 +3,6 @@
     <table border=1>
       <thead>
         <tr>
-          <th>ID</th>
           <th><%= Department.human_attribute_name(:name) %></th>
           <th></th>
         </tr>
@@ -11,7 +10,6 @@
       <tbody>
         <% @departments.each do |department| %>
           <tr>
-            <td><%= department.id %></td>
             <td><%= department.name %></td>
             <td>
               <div>

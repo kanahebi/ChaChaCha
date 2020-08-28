@@ -3,7 +3,6 @@
     <table border=1>
       <thead>
         <tr>
-          <th>ID</th>
           <th><%= User.human_attribute_name(:department) %></th>
           <th><%= User.human_attribute_name(:unique_name) %></th>
           <th><%= User.human_attribute_name(:name) %></th>
@@ -14,7 +13,6 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.id %></td>
             <td><%= user&.department&.name %></td>
             <td><%= user.unique_name %></td>
             <td><%= user.name %></td>
