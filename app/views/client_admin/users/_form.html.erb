@@ -1,0 +1,43 @@
+<%= render "shared/section", title: title do %>
+  <%= form_with(model: [:client_admin, user], local: true) do |form| %>
+    <%= render "shared/errors", object: form.object %>
+
+    <%= render "shared/form_group", form: form, name: :department_id, required: true do %>
+      <%= form.select :department_id, current_user.client.departments.pluck(:name, :id), { include_blank: true }, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :unique_name, required: true do %>
+      <%= form.text_field :unique_name, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :name, required: true do %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :password, required: user.new_record? do %>
+      <%= form.password_field :password, class: 'form-control', required: user.new_record? %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :password, required: user.new_record? do %>
+      <%= form.password_field :password_confirmation, class: 'form-control', required: user.new_record? %>
+    <% end %>
+
+    <%= render "shared/form_group", form: form, name: :role, required: true do %>
+      <%= form.radio_button :role, :client_admin %>
+      <%= form.label :role_client_admin, '管理者' %>
+
+      <%= form.radio_button :role, :client_general %>
+      <%= form.label :role_client_general, '一般' %>
+    <% end %>
+
+
+
+
+    <%= form.hidden_field :client_id, value: current_user&.client_id %>
+    <!-- 影山さんはclient_id: nil -->
+
+    <div class="submit-container">
+      <%= form.submit class: 'btn-primary block rounded' %>
+    </div>
+  <% end %>
+<% end %>

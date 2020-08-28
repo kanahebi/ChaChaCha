@@ -26,8 +26,12 @@ ja:
         date: 日付
         memo: メモ
       department:
+        client: :activerecord.models.client
         name: 部署名
       user:
+        client: :activerecord.models.client
+        department: :activerecord.models.department
+        department_id: :activerecord.models.department
         unique_name: ユーザID
         name: ユーザ名
         password: パスワード
@@ -35,14 +39,29 @@ ja:
         password_digest: パスワードダイジェスト
         role: 役割
       work_content:
+        client: :activerecord.models.client
         name: 作業名
         name_kana: 作業名カナ
         active: 日報に表示
       work_property:
+        client: :activerecord.models.client
         name: 物件名
         code: 物件コード
         active: 日報に表示
       work:
+        daily_report: :activerecord.models.daily_report
+        work_content: :activerecord.models.work_content
+        work_property: :activerecord.models.work_property
+        start_at: 開始時刻
+        end_at: 終了時刻
+        include_rest: 休憩込み
+  enums:
+    user:
+      role:
+        system_admin: システム管理者
+        client_admin: 管理者
+        client_general: 一般
+
 
   attributes:
     created_at: 登録日時

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root "roots#index"
 
     resources :departments, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_contents, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_properties, only: [:index, :new, :create, :edit, :update, :destroy]
   end
