@@ -1,0 +1,20 @@
+.arigatona-stack {
+  background-color: #fff;
+
+  .arigatona-item {
+    padding: $spacer;
+
+    + .arigatona-item {
+      border-top: 1px solid $color-base-border;
+    }
+
+    .date {
+      color: $color-base-text;
+      font-size: .8rem;
+    }
+
+    .from-to {
+      margin-bottom: .5rem;
+    }
+  }
+}
