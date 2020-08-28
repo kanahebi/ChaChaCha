@@ -1,0 +1,16 @@
+<%= render "shared/section", title: title do %>
+  <%= form_with(model: [:client_admin, department], local: true) do |form| %>
+    <%= render "shared/errors", object: form.object %>
+
+    <%= render "shared/form_group", form: form, name: :name, required: true do %>
+      <%= form.text_field :name, class: 'form-control', required: true %>
+    <% end %>
+
+    <%= form.hidden_field :client_id, value: current_user&.client_id %>
+    <!-- 影山さんはclient_id: nil -->
+
+    <div class="submit-container">
+      <%= form.submit class: 'btn-primary block rounded' %>
+    </div>
+  <% end %>
+<% end %>

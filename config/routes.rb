@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "roots#index"
 
   resources :daily_reports, only: [:index, :show, :new, :create, :edit, :update]
+  resources :daily_reports, only: [:new, :create, :edit, :update]
+  resources :arigatonas, only: [:index]
 
   resource :session, only: [:new, :create, :destroy]
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   namespace :client_admin do
     root "roots#index"
 
+    resources :departments, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_contents, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_properties, only: [:index, :new, :create, :edit, :update, :destroy]
   end
