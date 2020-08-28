@@ -9,7 +9,7 @@ class ArigatonasController < ApplicationController
     @arigatonas = if params[:filter] == 'me'
       current_user.arigatonas
     else
-      Arigatona.all
+      Arigatona.where(user: current_user.client.users)
     end
   end
 end
