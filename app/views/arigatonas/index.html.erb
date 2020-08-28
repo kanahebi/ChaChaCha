@@ -1,4 +1,13 @@
 <div class="l-container">
+  <div class="heading-tab">
+    <div class="tab-item <%= 'active' if params[:filter] == 'me' %>">
+      <%= link_to "あなたへ", arigatonas_path(filter: :me), class: 'tab-anchor' %>
+    </div>
+    <div class="tab-item <%= 'active' if params[:filter].blank? %>">
+      <%= link_to "みんなの", arigatonas_path(filter: nil), class: 'tab-anchor' %>
+    </div>
+  </div>
+
   <div class="arigatona-stack">
     <% @arigatonas.each do |arigatona| %>
       <div class="arigatona-item">

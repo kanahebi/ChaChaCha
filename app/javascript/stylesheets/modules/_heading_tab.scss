@@ -1,0 +1,25 @@
+.heading-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $color-base-border;
+  background-color: #fff;
+
+  .tab-item {
+    flex-grow: 1;
+
+    &.active {
+      .tab-anchor {
+        box-shadow: 0 -2px 0 0 $color-primary inset;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .tab-anchor {
+    display: block;
+    padding: 1rem $spacer;
+    text-align: center;
+  }
+}
