@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "roots#index"
 
   resources :daily_reports, only: [:new, :create, :edit, :update]
+  resources :arigatonas, only: [:index]
 
   resource :session, only: [:new, :create, :destroy]
 
