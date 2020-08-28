@@ -4,7 +4,7 @@
 create_table "users", force: :cascade do |t|
   t.references "client", comment: "クライアント"
   t.references "department", comment: "部署"
-  t.string "unique_name", null: false, unique: true, comment: "ユーザID"
+  t.string "unique_name", null: false, index: { unique: true }, comment: "ユーザID"
   t.string "name", null: false, comment: "ユーザ名"
   t.string "password_digest", null: false, comment: "パスワードダイジェスト"
   t.integer "role", null: false, comment: "権限"

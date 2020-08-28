@@ -30,14 +30,15 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "users_limit", default: 0, null: false, comment: "最大ユーザ数"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_clients_on_name", unique: true
   end
 
   create_table "daily_reports", force: :cascade do |t|
     t.bigint "user_id", comment: "ユーザ"
     t.text "memo", comment: "メモ"
+    t.datetime "date", comment: "日付"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "date", comment: "日付"
     t.index ["user_id", "date"], name: "index_daily_reports_on_user_id_and_date", unique: true
     t.index ["user_id"], name: "index_daily_reports_on_user_id"
   end
@@ -51,16 +52,17 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.bigint "client_id", comment: "クライアント"
+    t.bigint "department_id", comment: "部署"
     t.string "unique_name", null: false, comment: "ユーザID"
     t.string "name", null: false, comment: "ユーザ名"
     t.string "password_digest", null: false, comment: "パスワードダイジェスト"
     t.integer "role", null: false, comment: "権限"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "client_id", comment: "クライアント"
-    t.bigint "department_id", comment: "部署"
     t.index ["client_id"], name: "index_users_on_client_id"
     t.index ["department_id"], name: "index_users_on_department_id"
+    t.index ["unique_name"], name: "index_users_on_unique_name", unique: true
   end
 
   create_table "work_contents", force: :cascade do |t|
