@@ -1,0 +1,25 @@
+.list-stack {
+  background-color: #fff;
+  list-style: none;
+
+  .list-item {
+    + .list-item {
+      border-top: 1px solid $color-base-border;
+    }
+  }
+
+  .list-anchor {
+    display: flex;
+    align-items: center;
+    padding: $spacer;
+
+    .arrow-icon {
+      color: $color-base-text;
+      font-size: .8rem;
+    }
+  }
+
+  .list-body {
+    flex-grow: 1;
+  }
+}
