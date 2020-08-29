@@ -1,32 +1,32 @@
 <div class="l-container">
   <%= render "shared/section", title: "ユーザ一覧" do %>
-    <table border=1>
-      <thead>
-        <tr>
-          <th><%= User.human_attribute_name(:department) %></th>
-          <th><%= User.human_attribute_name(:unique_name) %></th>
-          <th><%= User.human_attribute_name(:name) %></th>
-          <th><%= User.human_attribute_name(:role) %></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <div class="table-container">
+      <table>
+        <thead>
           <tr>
-            <td><%= user&.department&.name %></td>
-            <td><%= user.unique_name %></td>
-            <td><%= user.name %></td>
-            <td><%= t("enums.user.role.#{user.role}") %></td>
-            <td>
-              <div>
-                <%= link_to '編集', edit_client_admin_user_path(user) %>
-                <%= link_to '削除', client_admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-              </div>
-            </td>
+            <th><%= User.human_attribute_name(:department) %></th>
+            <th><%= User.human_attribute_name(:name) %></th>
+            <th><%= User.human_attribute_name(:role) %></th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to '新規作成', new_client_admin_user_path %>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user&.department&.name %></td>
+              <td><%= user.name %></td>
+              <td><%= t("enums.user.role.#{user.role}") %></td>
+              <td>
+                <div>
+                  <%= link_to '編集', edit_client_admin_user_path(user), class: 'btn-default rounded sm' %>
+                  <%= link_to '削除', client_admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn-danger rounded sm' %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= link_to '新規作成', new_client_admin_user_path, class: 'btn-primary rounded' %>
   <% end %>
 </div>

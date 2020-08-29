@@ -16,6 +16,11 @@
   &.rounded {
     border-radius: 50px;
   }
+
+  &.sm {
+    padding: .5rem .75rem;
+    font-size: .9rem;
+  }
 }
 
 .btn-default {
@@ -28,5 +33,12 @@
   @extend %button;
 
   background-color: $color-primary;
+  color: #fff;
+}
+
+.btn-danger {
+  @extend %button;
+
+  background-color: $color-danger;
   color: #fff;
 }
