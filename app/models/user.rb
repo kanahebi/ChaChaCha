@@ -19,6 +19,10 @@ class User < ApplicationRecord
 
   enum role: { system_admin: 10, client_admin: 20, client_general: 30 }
 
+  def submitted_daily_report_today?
+    daily_reports.where(created_at: Time.current.all_day).exists?
+  end
+
   private
 
   def over_users_limit?
