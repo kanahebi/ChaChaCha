@@ -6,10 +6,11 @@ class ArigatonasController < ApplicationController
   def index
     authorize Arigatona
 
-    @arigatonas = if params[:filter] == 'me'
-      current_user.arigatonas
+    if params[:filter] == 'me'
+      current_user.check_arigatonas
+      @arigatonas = current_user.arigatonas
     else
-      Arigatona.where(user: current_user.client.users)
+      @arigatonas = Arigatona.where(user: current_user.client.users)
     end
   end
 end
