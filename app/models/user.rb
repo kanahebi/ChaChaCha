@@ -23,7 +23,7 @@ class User < ApplicationRecord
     daily_reports.where(created_at: Time.current.all_day).exists?
   end
 
-  def check_arigatonas
+  def check_arigatonas!
     arigatonas.update_all(checked: true)
   end
 

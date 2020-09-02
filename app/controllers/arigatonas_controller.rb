@@ -7,7 +7,7 @@ class ArigatonasController < ApplicationController
     authorize Arigatona
 
     if params[:filter] == 'me'
-      current_user.check_arigatonas
+      current_user.check_arigatonas!
       @arigatonas = current_user.arigatonas
     else
       @arigatonas = Arigatona.where(user: current_user.client.users)
