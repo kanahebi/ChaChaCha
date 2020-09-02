@@ -1,0 +1,31 @@
+.reported-works {
+  margin: -1rem 0;
+
+  .works-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+
+    + .works-item {
+      border-top: 1px solid $color-base-border;
+    }
+
+    .check-icon {
+      margin-right: .5rem;
+      color: $color-done;
+    }
+
+    .body {
+      flex-grow: 1;
+    }
+
+    .range {
+      color: $color-base-text;
+    }
+
+    .rest-icon {
+      margin-left: .5rem;
+      color: $color-base-text;
+    }
+  }
+}
