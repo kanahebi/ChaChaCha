@@ -1,0 +1,13 @@
+.fab {
+  position: fixed;
+  right: $spacer;
+  bottom: 5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid $color-base-border;
+  border-radius: 50%;
+  background-color: #fff;
+  color: $color-base-text;
+  line-height: 3.5rem;
+  text-align: center;
+}

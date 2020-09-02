@@ -3,6 +3,10 @@ class DailyReportPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    edit?
+  end
+
   def create?
     true
   end

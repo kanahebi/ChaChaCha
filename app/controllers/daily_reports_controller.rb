@@ -13,6 +13,7 @@ class DailyReportsController < ApplicationController
   # GET /daily_reports/1
   # GET /daily_reports/1.json
   def show
+    authorize @daily_report
   end
 
   # GET /daily_reports/new
