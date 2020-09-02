@@ -21,7 +21,9 @@
         <%= link_to arigatonas_path, class: "iconic-list-anchor" do %>
           <div class="icon">
             <i class="fas fa-heart"></i>
-            <div class="label-icon arigato">100</div>
+            <% unless current_user.unchecked_arigatonas_count.zero? %>
+              <div class="label-icon arigato"><%= current_user.unchecked_arigatonas_count %></div>
+            <% end %>
           </div>
           <div class="body">
             "ありがとう"を見る

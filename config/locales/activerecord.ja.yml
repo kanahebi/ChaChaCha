@@ -19,6 +19,7 @@ ja:
     attributes:
       arigatona:
         comment: コメント
+        checked: 確認済
       client:
         name: クライアント名
         users_limit: 最大ユーザ数

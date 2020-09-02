@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.bigint "daily_report_id", comment: "日報"
     t.bigint "user_id", comment: "ユーザ"
     t.text "comment", null: false, comment: "コメント"
+    t.boolean "checked", default: false, null: false, comment: "確認済"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["daily_report_id"], name: "index_arigatonas_on_daily_report_id"

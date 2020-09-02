@@ -23,6 +23,14 @@ class User < ApplicationRecord
     daily_reports.where(created_at: Time.current.all_day).exists?
   end
 
+  def check_arigatonas!
+    arigatonas.update_all(checked: true)
+  end
+
+  def unchecked_arigatonas_count
+    arigatonas.where(checked: false).count
+  end
+
   private
 
   def over_users_limit?
