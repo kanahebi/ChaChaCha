@@ -8,8 +8,8 @@ class Arigatona < ApplicationRecord
 
   def as_json_for_form
     as_json.merge(
-      user: user.as_json.merge(
-        department: user.department.as_json
+      user: user&.as_json&.merge(
+        department: user&.department&.as_json
       )
     )
   end

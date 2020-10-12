@@ -104,7 +104,7 @@ class DailyReportsController < ApplicationController
   def assign_arigatona(daily_report)
     if daily_report.arigatona
       daily_report.arigatona.assign_attributes(arigatona_params)
-    else
+    elsif params.dig(:arigatona, :user_id) != '0'
       daily_report.build_arigatona(arigatona_params)
     end
   end
@@ -136,7 +136,7 @@ class DailyReportsController < ApplicationController
   end
 
   def arigatona_params
-    params.require(:arigatona).permit(
+    params.fetch(:arigatona).permit(
       :user_id,
       :comment
     )
