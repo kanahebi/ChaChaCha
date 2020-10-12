@@ -29,7 +29,7 @@
         camelize_props: true) %>
     <% end %>
     <%= render "shared/form_group", form: form, name: nil do %>
-      <%= text_area_tag "arigatona[comment]", @daily_report.arigatona&.comment, class: 'form-control', rows: 3, required: true %>
+      <%= text_area_tag "arigatona[comment]", @daily_report.arigatona&.comment, class: 'form-control', rows: 3 %>
     <% end %>
   <% end %>
 
