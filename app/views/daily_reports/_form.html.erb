@@ -3,7 +3,7 @@
 
   <%= render "shared/section", title: "1. 作業日時" do %>
     <%= render "shared/form_group", form: form, name: :date, required: true do %>
-      <%= form.date_field :date, class: 'form-control', required: true %>
+      <%= form.date_field :date, readonly: daily_report.persisted?, class: 'form-control', required: true %>
     <% end %>
   <% end %>
 
