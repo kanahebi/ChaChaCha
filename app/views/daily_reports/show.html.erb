@@ -21,8 +21,12 @@
   <% end %>
 
   <%= render "shared/section", title: "2. 送った\"ありがとう\"" do %>
-    <p><%= @daily_report.arigatona.user.name %>さんへ</p>
-    <%= simple_format @daily_report.arigatona.comment %>
+    <% if @daily_report.arigatona%>
+      <p><%= @daily_report.arigatona.user.name %>さんへ</p>
+      <%= simple_format @daily_report.arigatona.comment %>
+    <% else %>
+      <p>なし</p>
+    <% end %>
   <% end %>
 
   <%= render "shared/section", title: "3. その他" do %>
