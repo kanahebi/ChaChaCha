@@ -11,4 +11,8 @@ module ApplicationHelper
       root_url
     end
   end
+
+  def active_page?(prefix:, except: nil)
+    request.original_fullpath.start_with?(prefix) && request.original_fullpath != except
+  end
 end

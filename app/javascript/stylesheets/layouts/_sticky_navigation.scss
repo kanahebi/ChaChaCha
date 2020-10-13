@@ -16,6 +16,10 @@
     flex-grow: 1;
   }
 
+  & .navigation-item.active {
+    background-color: $color-accent;
+  }
+
   .navigation-anchor {
     display: block;
     padding: .5rem 0 1.5rem;

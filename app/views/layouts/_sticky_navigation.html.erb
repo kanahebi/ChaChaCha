@@ -1,25 +1,25 @@
 <nav class="l-sticky-navigation">
   <div class="l-container">
     <ul class="navigations">
-      <li class="navigation-item">
+      <li class="navigation-item <%= 'active' if active_page?(prefix: root_path_judged_by_role) %>">
         <%= link_to root_path_judged_by_role, class: 'navigation-anchor' do %>
           <i class="fas fa-home"></i>
           <div class="navigation-label">ホーム</div>
         <% end %>
       </li>
-      <li class="navigation-item">
+      <li class="navigation-item <%= 'active' if active_page?(prefix: new_daily_report_path) %>">
         <%= link_to new_daily_report_path, class: 'navigation-anchor' do %>
           <i class="fas fa-hand-point-up"></i>
           <div class="navigation-label">日報</div>
         <% end %>
       </li>
-      <li class="navigation-item">
+      <li class="navigation-item <%= 'active' if active_page?(prefix: arigatonas_path) %>">
         <%= link_to arigatonas_path, class: 'navigation-anchor' do %>
           <i class="fas fa-heart"></i>
           <div class="navigation-label">ありがとう</div>
         <% end %>
       </li>
-      <li class="navigation-item">
+      <li class="navigation-item <%= 'active' if active_page?(prefix: daily_reports_path, except: new_daily_report_path) %>">
         <%= link_to daily_reports_path, class: 'navigation-anchor' do %>
           <i class="fas fa-search"></i>
           <div class="navigation-label">調べる</div>
