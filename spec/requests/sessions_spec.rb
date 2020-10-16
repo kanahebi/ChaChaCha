@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe "Sessions", type: :request do
   describe "new" do
     it "200" do
-      get new_session_url
+      get signin_url
       expect(response).to have_http_status(:ok)
     end
   end

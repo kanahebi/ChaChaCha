@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     session_rotation
     session.delete(:user_id)
     @current_user = nil
-    redirect_to new_session_url, notice: t(".done")
+    redirect_to signin_url, notice: t(".done")
   end
 
   private

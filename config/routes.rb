@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :daily_reports, only: [:new, :create, :edit, :update]
   resources :arigatonas, only: [:index]
 
-  resource :session, only: [:new, :create, :destroy]
+  get 'signin', to: 'sessions#new', as: :signin
+  resource :session, only: [:create, :destroy]
 
   namespace :api do
     resources :users, only: [:index]
