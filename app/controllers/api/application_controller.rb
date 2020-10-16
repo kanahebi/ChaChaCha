@@ -21,7 +21,7 @@ class Api::ApplicationController < ActionController::API
   end
 
   def require_login
-    redirect_to new_session_url unless logged_in?
+    redirect_to signin_url unless logged_in?
   end
 
   def pundit_user
