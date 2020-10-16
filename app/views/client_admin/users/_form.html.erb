@@ -15,10 +15,11 @@
     <% end %>
 
     <%= render "shared/form_group", form: form, name: :password, required: user.new_record? do %>
+      <div>8文字以上で入力してください</div>
       <%= form.password_field :password, class: 'form-control', required: user.new_record? %>
     <% end %>
 
-    <%= render "shared/form_group", form: form, name: :password, required: user.new_record? do %>
+    <%= render "shared/form_group", form: form, name: :password_confirmation, required: user.new_record? do %>
       <%= form.password_field :password_confirmation, class: 'form-control', required: user.new_record? %>
     <% end %>
 
