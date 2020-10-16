@@ -18,7 +18,7 @@
       <div class="l-content">
         <%= yield %>
       </div>
-      <%= render "layouts/sticky_navigation" %>
+      <%= render "layouts/sticky_navigation" unless current_user&.system_admin? %>
     </div>
   </body>
 </html>
