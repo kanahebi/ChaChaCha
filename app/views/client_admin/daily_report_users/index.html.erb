@@ -1,0 +1,26 @@
+<div class="l-container">
+  <%= render "shared/section", title: "ユーザー一覧" do %>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th><%= User.human_attribute_name(:name) %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td>
+                <div>
+                  <%= link_to '日報一覧', client_admin_daily_report_user_path(user), class: 'btn-default rounded sm' %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="l-container">
+  <%= render "shared/section", title: "#{@user.name}さんの日報一覧" do %>
+    <%= link_to '代理提出', new_client_admin_daily_report_user_path(@user), class: 'btn-primary rounded' %>
+    <ul class="list-stack">
+      <% if @daily_reports.blank? %>
+        <li class="list-item">
+          <div class="list-body">
+            なし
+          </div>
+        </li>
+      <% end %>
+      <% @daily_reports.each do |daily_report| %>
+        <li class="list-item">
+          <%= link_to client_admin_daily_report_path(daily_report), class: 'list-anchor' do %>
+            <div class="list-body">
+              <%= l daily_report.date, format: :long %>
+            </div>
+            <i class="fas fa-chevron-right arrow-icon"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
