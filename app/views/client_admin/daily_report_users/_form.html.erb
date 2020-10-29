@@ -1,0 +1,51 @@
+<%= form_with(model: daily_report, url: create_client_admin_daily_report_user_path(@user), local: true) do |form| %>
+  <%= render "shared/errors", object: form.object %>
+
+  <div class="l-section">
+    <h2 class="section-title">
+      <span class="title"><%= "#{@user.name}さんの日報を提出する" %></span>
+    </h2>
+  </div>
+
+  <%= render "shared/section", title: "1. 作業日時" do %>
+    <%= render "shared/form_group", form: form, name: :date, required: true do %>
+      <%= form.date_field :date, readonly: daily_report.persisted?, class: 'form-control', required: true %>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/section", title: "2. 報告内容を編集" do %>
+    <%= react_component(
+      "DailyReportWorksForm",
+      {
+        dailyReportWorks: @daily_report.works.map(&:as_json_for_form),
+        work_contents: current_user.client&.work_contents&.map(&:as_json),
+        work_properties: current_user.client&.work_properties&.map(&:as_json),
+      },
+      camelize_props: true) %>
+  <% end %>
+
+  <%= render "shared/section", title: "3. ありがとうを送る" do %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= react_component(
+        "DailyReportArigatonaForm",
+        {
+          dailyReportArigatona: @daily_report.arigatona&.as_json_for_form || {},
+          departments: current_user.client&.departments
+        },
+        camelize_props: true) %>
+    <% end %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= text_area_tag "arigatona[comment]", @daily_report.arigatona&.comment, class: 'form-control', rows: 3 %>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/section", title: "4. 連絡事項" do %>
+    <%= render "shared/form_group", form: form, name: nil do %>
+      <%= form.text_area :memo, class: 'form-control', rows: 3 %>
+    <% end %>
+  <% end %>
+
+  <div class="submit-container">
+    <%= form.submit class: 'btn-primary block rounded' %>
+  </div>
+<% end %>

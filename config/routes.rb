@@ -21,6 +21,13 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_contents, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :work_properties, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :daily_reports, only: [:show, :edit, :update]
+    resources :daily_report_users, only: [:index, :show] do
+      member do
+        get '/new', to: 'daily_report_users#new', as: 'new'
+        post '/', to: 'daily_report_users#create', as: 'create'
+      end
+    end
   end
 
   namespace :system_admin do

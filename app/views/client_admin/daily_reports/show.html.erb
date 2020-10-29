@@ -1,0 +1,44 @@
+<div class="l-container">
+  <div class="l-section">
+    <h2 class="section-title">
+      <span class="title"><%= "#{@user.name}さんの日報" %></span>
+    </h2>
+  </div>
+  <%= render "shared/section", title: "1. 報告された内容" do %>
+    <ul class="reported-works">
+      <% @daily_report.works.each do |work| %>
+        <li class="works-item">
+          <i class="fas fa-check-circle check-icon"></i>
+          <div class="body">
+            <%= work.work_content.name %>
+          </div>
+          <div class="range">
+            <%= work.start_at.strftime("%H:%M") %>
+            -
+            <%= work.end_at.strftime("%H:%M") %>
+          </div>
+          <% if work.include_rest %>
+            <i className="fas fa-utensils rest-icon"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= render "shared/section", title: "2. 送った\"ありがとう\"" do %>
+    <% if @daily_report.arigatona%>
+      <p><%= @daily_report.arigatona.user.name %>さんへ</p>
+      <%= simple_format @daily_report.arigatona.comment %>
+    <% else %>
+      <p>なし</p>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/section", title: "3. その他" do %>
+    <%= simple_format @daily_report.memo %>
+  <% end %>
+</div>
+
+<%= link_to edit_client_admin_daily_report_path(@daily_report), class: "fab" do %>
+  <i class="fas fa-edit"></i>
+<% end %>
