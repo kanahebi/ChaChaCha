@@ -1,28 +1,28 @@
 <nav class="l-sticky-navigation">
   <div class="l-container">
     <ul class="navigations">
-      <li class="navigation-item <%= 'active' if active_page?(prefix: root_path_judged_by_role) %>">
+      <li class="navigation-item">
         <%= link_to root_path_judged_by_role, class: 'navigation-anchor' do %>
-          <i class="fas fa-home"></i>
-          <div class="navigation-label">ホーム</div>
+          <i class="fas fa-home <%= 'active' if active_page?(prefix: root_path_judged_by_role) %>"></i>
+          <div class="navigation-label <%= 'active' if active_page?(prefix: root_path_judged_by_role) %>">ホーム</div>
         <% end %>
       </li>
-      <li class="navigation-item <%= 'active' if active_page?(prefix: new_daily_report_path) %>">
+      <li class="navigation-item">
         <%= link_to new_daily_report_path, class: 'navigation-anchor' do %>
-          <i class="fas fa-hand-point-up"></i>
-          <div class="navigation-label">日報</div>
+          <i class="fas fa-hand-point-up  <%= 'active' if active_page?(prefix: new_daily_report_path) %>"></i>
+          <div class="navigation-label  <%= 'active' if active_page?(prefix: new_daily_report_path) %>">日報</div>
         <% end %>
       </li>
-      <li class="navigation-item <%= 'active' if active_page?(prefix: arigatonas_path) %>">
+      <li class="navigation-item">
         <%= link_to arigatonas_path, class: 'navigation-anchor' do %>
-          <i class="fas fa-heart"></i>
-          <div class="navigation-label">ありがとう</div>
+          <i class="fas fa-heart <%= 'active' if active_page?(prefix: arigatonas_path) %>"></i>
+          <div class="navigation-label <%= 'active' if active_page?(prefix: arigatonas_path) %>">ありがとう</div>
         <% end %>
       </li>
-      <li class="navigation-item <%= 'active' if active_page?(prefix: daily_reports_path, except: new_daily_report_path) %>">
+      <li class="navigation-item">
         <%= link_to daily_reports_path, class: 'navigation-anchor' do %>
-          <i class="fas fa-search"></i>
-          <div class="navigation-label">調べる</div>
+          <i class="fas fa-search <%= 'active' if active_page?(prefix: daily_reports_path, except: new_daily_report_path) %>"></i>
+          <div class="navigation-label <%= 'active' if active_page?(prefix: daily_reports_path, except: new_daily_report_path) %>">調べる</div>
         <% end %>
       </li>
     </ul>

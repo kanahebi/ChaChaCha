@@ -16,8 +16,8 @@
     flex-grow: 1;
   }
 
-  & .navigation-item.active {
-    background-color: $color-accent;
+  .active {
+    color: $color-accent;
   }
 
   .navigation-anchor {
