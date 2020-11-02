@@ -7,6 +7,7 @@
     <% end %>
 
     <%= render "shared/form_group", form: form, name: :unique_name, required: true do %>
+      <div> 使える文字は、小文字大文字アルファベッド、数字、「-」、「_」です</div>
       <%= form.text_field :unique_name, class: 'form-control', required: true %>
     <% end %>
 
