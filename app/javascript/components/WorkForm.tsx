@@ -28,15 +28,15 @@ export const WorkForm = ({
       >
         <option value={0}>---</option>
         {
-            workProperties.map((workProperty) => (
-              <option
-                key={workProperty.id}
-                value={workProperty.id}
-              >
-                {workProperty.name}
-              </option>
-            ))
-          }
+          workProperties.map((workProperty) => (
+            <option
+              key={workProperty.id}
+              value={workProperty.id}
+            >
+              {workProperty.name}
+            </option>
+          ))
+        }
       </select>
     </FormGroup>
     <FormGroup label="内容" required>
@@ -55,14 +55,14 @@ export const WorkForm = ({
       >
         <option value={0}>---</option>
         {
-            workContents.map((workContent) => (
-                <option
-                    key={workContent.id}
-                    value={workContent.id}
-                >
-                    {workContent.name}
-                </option>
-            ))
+          workContents.map((workContent) => (
+            <option
+              key={workContent.id}
+              value={workContent.id}
+            >
+              {workContent.name}
+            </option>
+          ))
           }
       </select>
     </FormGroup>
