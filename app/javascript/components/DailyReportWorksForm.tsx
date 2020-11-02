@@ -40,6 +40,7 @@ const DailyReportWorksForm = ({ dailyReportWorks, workContents, workProperties }
       workContent: null,
       workProperty: null,
     });
+    setAddEnable(false);
   };
 
   const handleDelete = (index: number) => {
