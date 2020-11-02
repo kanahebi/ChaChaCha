@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def active_page?(prefix:, except: nil)
-    request.original_fullpath.start_with?(prefix) && request.original_fullpath != except
+    current_page?(prefix) && request.original_fullpath != except
   end
 end
