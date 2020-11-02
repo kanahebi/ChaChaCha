@@ -15,7 +15,7 @@
             <tr>
               <td><%= property.name %></td>
               <td><%= property.code %></td>
-              <td><%= property.active %></td>
+              <td><input type="checkbox" onclick="return false;" <%= 'checked' if property.active %> ></td>
               <td>
                 <div>
                   <%= link_to '編集', edit_client_admin_work_property_path(property), class: 'btn-default rounded sm' %>

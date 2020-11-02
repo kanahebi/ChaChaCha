@@ -15,7 +15,7 @@
             <tr>
               <td><%= content.name %></td>
               <td><%= content.name_kana %></td>
-              <td><%= content.active %></td>
+              <td><input type="checkbox" onclick="return false;" <%= 'checked' if content.active %> ></td>
               <td>
                 <div>
                   <%= link_to '編集', edit_client_admin_work_content_path(content), class: 'btn-default rounded sm' %>
